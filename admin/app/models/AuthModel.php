@@ -13,7 +13,7 @@ class AuthModel extends Model
     $this->client = new Google\Client();
     $this->client->setClientId("1031684180441-i7gdhi9rh8kcrqo9isg8ndn9h1u0cdfc.apps.googleusercontent.com");
     $this->client->setClientSecret("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");
-    $this->client->setRedirectUri("http://localhost/fpoly_manager/admin/login");
+    $this->client->setRedirectUri("http://localhost/fpoly_teacher_tool/admin/auth/login");
     // $this->client->setAuthConfig('client_credentials.json');
 
     $this->client->setScopes(array(

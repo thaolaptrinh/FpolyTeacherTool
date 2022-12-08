@@ -15,7 +15,8 @@ class Auth extends Controller
       header('location: ' . BASE_URL(''));
     }
 
-    $this->data['target'] = 'auth';
+    $this->data['type'] = 'auth';
+
     $this->model_home = $this->model('AuthModel');
     $this->data = array_merge($this->data, $this->model_home->data);
   }

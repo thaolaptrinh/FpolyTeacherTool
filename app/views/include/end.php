@@ -36,6 +36,7 @@
 
 if ($type == 'teacher') { ?>
   <script src="<?= BASE_URL('assets/js/custom/utilities/modals/create-app.js') ?>"></script>
+  <script src="<?= BASE_URL('assets/js/custom/app/alert-donate.js') ?>"></script>
 <?php } ?>
 <?php
 if ($page_target == 'login') { ?>

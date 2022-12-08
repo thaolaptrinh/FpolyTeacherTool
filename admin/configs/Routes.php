@@ -2,12 +2,9 @@
 
 $routes[''] = 'admin';
 $routes['default_controller'] = 'admin';
-$routes['quan-tri'] = 'admin';
 
 
 
-//Auth
-$routes['login'] = 'auth/login';
-$routes['logout'] = 'auth/logout';
-$routes['profile'] = 'admin/profile';
-$routes['register'] = 'auth/register';
+$routes['quan-ly/site'] = 'admin/site';
+$routes['quan-ly/co-so'] = 'admin/co_so';
+$routes['giao-vien'] = 'admin/teachers';

@@ -11,6 +11,9 @@ class TeacherModel extends Model
     {
         # code...
         $this->data = [
+            'ung_ho' => $this->get_list("SELECT * FROM `ung_ho` WHERE isAlert = 1  AND 
+             id_teacher = '" . $this->getInfoTeacher('id_teacher') . "'
+            ORDER BY id DESC"),
             'hoc_ky' => $this->get_list("SELECT * FROM  `hoc_ky` 
             WHERE id_teacher  = '" . $this->getInfoTeacher('id_teacher') . "' ORDER BY ten_hocky"),
             'khoa' => $this->get_list("SELECT * FROM `khoa` WHERE id_teacher = '" . $this->getInfoTeacher('id_teacher') . "' 
@@ -18,8 +21,26 @@ class TeacherModel extends Model
             'mon_hoc' => $this->get_list("SELECT * FROM `mon_hoc` WHERE id_teacher = '" . $this->getInfoTeacher('id_teacher') . "'ORDER BY id_mon DESC"),
             'loai_lop' => $this->get_list("SELECT * FROM `loai_lop` WHERE id_teacher = '" . $this->getInfoTeacher('id_teacher') . "'ORDER BY id_loai DESC"),
             'lien_ket' => $this->get_list("SELECT * FROM `lien_ket` WHERE id_teacher = '" . $this->getInfoTeacher('id_teacher') .
-                "'ORDER BY id_lienket DESC"),
+                "'ORDER BY id_lienket DESC limit 5"),
         ];
+
+        if (isset($_POST['is_alertDonate'])) {
+            if (!empty($this->data['ung_ho'])) {
+                foreach ($this->data['ung_ho'] as $row) {
+                    $update_alert = $this->update_value('ung_ho', ['isAlert' => 2], "id = '" . $row['id'] . "'");
+                    if ($update_alert) {
+                        $response['status'] = true;
+                        $response['message'] = 'Chúng tôi đã nhận ủng hộ từ bạn. Xin cảm ơn!';
+                        die(json_encode($response));
+                    }
+                }
+            } else {
+
+                $response['status'] = false;
+                die(json_encode($response));
+            }
+        }
+
 
         if (isset($_POST["is_import"])) {
             $hoc_ky = $_POST['hoc-ky'];
@@ -154,7 +175,7 @@ class TeacherModel extends Model
                     INNER JOIN `mon_hoc` on mon_hoc.id_mon   = diem_sv.id_mon 
                     INNER JOIN `loai_lop` on loai_lop.id_loai  = diem_sv.id_lop
                     INNER JOIN `khoa` on khoa.id_khoa  = loai_lop.id_khoa
-                    WHERE mon_hoc.ma_mon LIKE '%" . $_GET['mon'] . "%' ORDER BY diem_sv.id_mon DESC
+                    WHERE loai_lop.ten_lop  = '" . $_GET['lop'] . "' AND mon_hoc.ma_mon LIKE '%" . $_GET['mon'] . "%' ORDER BY diem_sv.id_mon DESC
                     ")
                 ];
             } else {

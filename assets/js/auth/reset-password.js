@@ -84,27 +84,6 @@ var KTAuthResetPassword = (function () {
               .catch((error) => {
                 console.log(error);
               });
-
-            // Show message popup. For more info check the plugin's official documentation: https://sweetalert2.github.io/
-            Swal.fire({
-              text: "We have send a password reset link to your email.",
-              icon: "success",
-              buttonsStyling: false,
-              confirmButtonText: "Ok, got it!",
-              customClass: {
-                confirmButton: "btn btn-primary",
-              },
-            }).then(function (result) {
-              if (result.isConfirmed) {
-                form.querySelector('[name="email"]').value = "";
-                //form.submit();
-
-                var redirectUrl = form.getAttribute("data-kt-redirect-url");
-                if (redirectUrl) {
-                  location.href = redirectUrl;
-                }
-              }
-            });
           }, 1500);
         } else {
           // Show error popup. For more info check the plugin's official documentation: https://sweetalert2.github.io/

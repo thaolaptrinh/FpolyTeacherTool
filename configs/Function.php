@@ -65,3 +65,37 @@ function get_client_ip()
   else $ip = "unknown";
   return ($ip);
 }
+
+
+function curl_url($url, $arr = [])
+{
+  $curl = curl_init();
+  curl_setopt_array($curl, array(
+    CURLOPT_RETURNTRANSFER => 1,
+    CURLOPT_URL => $url,
+    CURLOPT_SSL_VERIFYPEER => false,
+    CURLOPT_POSTFIELDS => http_build_query($arr)
+  ));
+
+
+  $resp = curl_exec($curl);
+  $result = json_decode($resp, TRUE);
+  curl_close($curl);
+  return $result;
+}
+
+
+function curl_get($url)
+{
+  $curl = curl_init();
+  curl_setopt_array($curl, array(
+    CURLOPT_RETURNTRANSFER => 1,
+    CURLOPT_URL => $url,
+    CURLOPT_SSL_VERIFYPEER => false,
+  ));
+
+  $resp = curl_exec($curl);
+  $result = json_decode($resp, true);
+  curl_close($curl);
+  return $result;
+}

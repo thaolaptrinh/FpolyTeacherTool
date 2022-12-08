@@ -162,46 +162,12 @@
               Website quản lý điểm sinh viên dành cho Giáo viên FPT Polytechnic do sinh viên trường phát triển.
             </span>
 
-            <!-- <div class="d-flex align-items-center flex-wrap d-grid gap-2 mb-8">
-              <div class="d-flex align-items-center me-5 me-xl-13">
-                <div class="symbol symbol-30px symbol-circle me-3">
-                  <span class="symbol-label" style="background: rgba(255, 255, 255, 0.1)">
-                    <span class="svg-icon svg-icon-5 svg-icon-white">
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M18 21.6C16.6 20.4 9.1 20.3 6.3 21.2C5.7 21.4 5.1 21.2 4.7 20.8L2 18C4.2 15.8 10.8 15.1 15.8 15.8C16.2 18.3 17 20.5 18 21.6ZM18.8 2.8C18.4 2.4 17.8 2.20001 17.2 2.40001C14.4 3.30001 6.9 3.2 5.5 2C6.8 3.3 7.4 5.5 7.7 7.7C9 7.9 10.3 8 11.7 8C15.8 8 19.8 7.2 21.5 5.5L18.8 2.8Z" fill="currentColor" />
-                        <path opacity="0.3" d="M21.2 17.3C21.4 17.9 21.2 18.5 20.8 18.9L18 21.6C15.8 19.4 15.1 12.8 15.8 7.8C18.3 7.4 20.4 6.70001 21.5 5.60001C20.4 7.00001 20.2 14.5 21.2 17.3ZM8 11.7C8 9 7.7 4.2 5.5 2L2.8 4.8C2.4 5.2 2.2 5.80001 2.4 6.40001C2.7 7.40001 3.00001 9.2 3.10001 11.7C3.10001 15.5 2.40001 17.6 2.10001 18C3.20001 16.9 5.3 16.2 7.8 15.8C8 14.2 8 12.7 8 11.7Z" fill="currentColor" />
-                      </svg>
-                    </span>
-                  </span>
-                </div>
-                <div class="text-white">
-                  <span class="fw-semibold d-block fs-8 opacity-75">Đã nhận</span>
-                  <span class="fw-bold fs-7">1000000</span>
-                </div>
-              </div>
-              <div class="d-flex align-items-center">
-                <div class="symbol symbol-30px symbol-circle me-3">
-                  <span class="symbol-label" style="background: rgba(255, 255, 255, 0.1)">
-                    <span class="svg-icon svg-icon-5 svg-icon-white">
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path opacity="0.3" d="M21.25 18.525L13.05 21.825C12.35 22.125 11.65 22.125 10.95 21.825L2.75 18.525C1.75 18.125 1.75 16.725 2.75 16.325L4.04999 15.825L10.25 18.325C10.85 18.525 11.45 18.625 12.05 18.625C12.65 18.625 13.25 18.525 13.85 18.325L20.05 15.825L21.35 16.325C22.35 16.725 22.35 18.125 21.25 18.525ZM13.05 16.425L21.25 13.125C22.25 12.725 22.25 11.325 21.25 10.925L13.05 7.62502C12.35 7.32502 11.65 7.32502 10.95 7.62502L2.75 10.925C1.75 11.325 1.75 12.725 2.75 13.125L10.95 16.425C11.65 16.725 12.45 16.725 13.05 16.425Z" fill="currentColor" />
-                        <path d="M11.05 11.025L2.84998 7.725C1.84998 7.325 1.84998 5.925 2.84998 5.525L11.05 2.225C11.75 1.925 12.45 1.925 13.15 2.225L21.35 5.525C22.35 5.925 22.35 7.325 21.35 7.725L13.05 11.025C12.45 11.325 11.65 11.325 11.05 11.025Z" fill="currentColor" />
-                      </svg>
-                    </span>
-                  </span>
-                </div>
-                <div class="text-white">
-                  <span class="fw-semibold opacity-75 d-block fs-8">Người dùng</span>
-                  <span class="fw-bold fs-7">1</span>
-                </div>
-              </div>
-            </div> -->
+
 
             <div class="d-flex d-grid gap-2">
-              <a href="#" class="btn btn-success me-lg-2" data-bs-toggle="modal" data-bs-target="#kt_modal_upgrade_plan">
-                Đánh giá
+              <a href="#" class="btn btn-success me-lg-2" data-bs-toggle="modal" data-bs-target="#kt_modal_donate">
+                Ủng hộ chúng tôi
               </a>
-              <a href="#" class="btn text-white" style="background: rgba(255, 255, 255, 0.2)">Ủng hộ</a>
             </div>
           </div>
 
@@ -318,6 +284,136 @@
         </div>
         <div class="separator separator-dashed border-gray-200 mb-n4"></div>
 
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="kt_modal_donate" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content rounded">
+      <div class="modal-header justify-content-end border-0 pb-0">
+        <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+          <span class="svg-icon svg-icon-1">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="currentColor" />
+              <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="currentColor" />
+            </svg>
+          </span>
+        </div>
+      </div>
+
+      <div class="modal-body pt-0 pb-15 px-5 px-xl-20">
+        <div class="mb-13 text-center">
+          <h1 class="mb-3">Ủng hộ chúng tôi!</h1>
+          <div class="text-muted fw-semibold fs-5">
+            Nếu bạn muốn đóng góp vui lòng xem các thông tin thanh toán phía dưới. Xin cảm ơn!
+
+          </div>
+        </div>
+        <div class="d-flex flex-column">
+
+          <div class="row mt-10">
+            <div class="col-lg-6 mb-10 mb-lg-0">
+              <div class="nav flex-column">
+                <label class="nav-link btn btn-outline btn-outline-dashed 
+                btn-color-dark btn-active btn-active-primary d-flex flex-stack text-start p-6 active mb-6" data-bs-toggle="tab" data-bs-target="#kt_donate_mbbank">
+                  <div class="d-flex align-items-center me-2">
+                    <div class="form-check form-check-custom form-check-solid form-check-success flex-shrink-0 me-6">
+                      <input class="form-check-input" type="radio" name="plan" checked="checked" value="startup" />
+                    </div>
+                    <div class="flex-grow-1">
+                      <div class="d-flex align-items-center fs-2 fw-bold flex-wrap">MB BANK</div>
+                      <div class="fw-semibold opacity-75">
+                        Ngân hàng Việt Nam
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="ms-5">
+                    <span class="mb-2">đ</span>
+                    <span class="fs-2x fw-bold">1.000</span>
+                    <span class="fs-7 opacity-50">/
+                      <span data-kt-element="period">min</span></span>
+                  </div>
+                </label>
+
+
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="tab-content rounded h-100 bg-light p-10">
+                <div class="tab-pane fade show active" id="kt_donate_mbbank">
+                  <div class="pb-5">
+                    <h2 class="fw-bold text-dark">Thông tin thanh toán</h2>
+
+                  </div>
+
+                  <div class="pt-1">
+
+                    <div class="d-flex align-items-center mb-1">
+                      <span class="fw-semibold fs-5 text-gray-700 flex-grow-1">
+                        <span class="badge py-3 px-4 fs-7 badge-light-success">Chủ tài khoản</span>
+                        <span class="fs-7"> NGUYEN VAN THAO
+                        </span>
+
+                      </span>
+                      <span class="svg-icon svg-icon-1 svg-icon-success">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <rect opacity="0.3" x="2" y="2" width="20" height="20" rx="10" fill="currentColor" />
+                          <path d="M10.4343 12.4343L8.75 10.75C8.33579 10.3358 7.66421 10.3358 7.25 10.75C6.83579 11.1642 6.83579 11.8358 7.25 12.25L10.2929 15.2929C10.6834 15.6834 11.3166 15.6834 11.7071 15.2929L17.25 9.75C17.6642 9.33579 17.6642 8.66421 17.25 8.25C16.8358 7.83579 16.1642 7.83579 15.75 8.25L11.5657 12.4343C11.2533 12.7467 10.7467 12.7467 10.4343 12.4343Z" fill="currentColor" />
+                        </svg>
+                      </span>
+                    </div>
+                    <div class="d-flex align-items-center mb-1">
+                      <span class="fw-semibold fs-5 text-gray-700 flex-grow-1">
+                        <span class="badge py-3 px-4 fs-7 badge-light-success">Số tài khoản</span>
+
+                        <span class="fs-7">0010142787305</span>
+
+                      </span>
+                      <span class="svg-icon svg-icon-1 svg-icon-success">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <rect opacity="0.3" x="2" y="2" width="20" height="20" rx="10" fill="currentColor" />
+                          <path d="M10.4343 12.4343L8.75 10.75C8.33579 10.3358 7.66421 10.3358 7.25 10.75C6.83579 11.1642 6.83579 11.8358 7.25 12.25L10.2929 15.2929C10.6834 15.6834 11.3166 15.6834 11.7071 15.2929L17.25 9.75C17.6642 9.33579 17.6642 8.66421 17.25 8.25C16.8358 7.83579 16.1642 7.83579 15.75 8.25L11.5657 12.4343C11.2533 12.7467 10.7467 12.7467 10.4343 12.4343Z" fill="currentColor" />
+                        </svg>
+                      </span>
+                    </div>
+
+                    <div class="d-flex align-items-center mb-1">
+                      <span class="fw-semibold fs-5 text-gray-700 flex-grow-1">
+                        <span class="badge py-3 px-4 fs-7 badge-light-success">Nội dung chuyển khoản</span>
+                        <span class="fs-7"><?= $this->model_home->getInfoTeacher('code_donate') ?></span>
+                      </span>
+                      <span class="svg-icon svg-icon-1 svg-icon-success">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <rect opacity="0.3" x="2" y="2" width="20" height="20" rx="10" fill="currentColor" />
+                          <path d="M10.4343 12.4343L8.75 10.75C8.33579 10.3358 7.66421 10.3358 7.25 10.75C6.83579 11.1642 6.83579 11.8358 7.25 12.25L10.2929 15.2929C10.6834 15.6834 11.3166 15.6834 11.7071 15.2929L17.25 9.75C17.6642 9.33579 17.6642 8.66421 17.25 8.25C16.8358 7.83579 16.1642 7.83579 15.75 8.25L11.5657 12.4343C11.2533 12.7467 10.7467 12.7467 10.4343 12.4343Z" fill="currentColor" />
+                        </svg>
+                      </span>
+                    </div>
+
+                  </div>
+
+                  <div class="pt-5">
+                    <div class="border border-warning border-dashed rounded min-w-125px py-3 px-4 mb-3">
+                      <div class="fw-semibold">
+                        Vui lòng chuyển khoảng đúng nội dung để chúng tôi
+
+                        biết bạn là ai và gửi lời cảm ơn đến bạn
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="d-flex flex-center flex-row-fluid pt-12">
+          <button type="reset" class="btn btn-light me-3" data-bs-dismiss="modal">Đóng </button>
+        </div>
       </div>
     </div>
   </div>

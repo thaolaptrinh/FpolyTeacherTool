@@ -99,6 +99,7 @@ class AuthModel extends Model
           $data_insert = [
             'email' => $data['email'],
             'password' => typepass($data['password']),
+            'code_donate' => $data['email'],
             'id_coso' =>  $data['coso'],
           ];
           $insert = $this->insert('teachers', $data_insert);
@@ -137,11 +138,12 @@ class AuthModel extends Model
           $response['status'] = false;
           $response['message']  = 'Định dạng email không hợp lệ!';
           die(json_encode($response));
-        } elseif (!$this->get_row("SELECT * FROM  `teachers` WHERE 'email' = '" . $_POST['email'] . "'")) {
+        } elseif (!$this->get_row("SELECT * FROM  `teachers` WHERE email = '" . $data['email'] . "'")) {
           $response['status'] = false;
           $response['message']  = 'Không tồn tại tài khoản email này!';
           die(json_encode($response));
         } else {
+          $this->send_mail($data['mail'], 'fpoly@gmail.com', 'fpoly@gmail.com', 'fpoly@gmail.com');
         }
       } else {
         $response['status'] = false;

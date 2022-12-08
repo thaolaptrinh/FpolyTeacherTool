@@ -46,6 +46,14 @@ function route($index)
   }
 }
 
+function route_last()
+{
+  global $route;
+  return end($route);
+}
+
+
+
 
 require_once 'vendor/autoload.php';
 require_once  '../configs/Database.php';
