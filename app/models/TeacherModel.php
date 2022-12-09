@@ -11,23 +11,37 @@ class TeacherModel extends Model
     {
         # code...
         $this->data = [
-            'ung_ho' => $this->get_list("SELECT * FROM `ung_ho` WHERE isAlert = 1  AND 
-             id_teacher = '" . $this->getInfoTeacher('id_teacher') . "'
-            ORDER BY id DESC"),
-            'hoc_ky' => $this->get_list("SELECT * FROM  `hoc_ky` 
-            WHERE id_teacher  = '" . $this->getInfoTeacher('id_teacher') . "' ORDER BY ten_hocky"),
-            'khoa' => $this->get_list("SELECT * FROM `khoa` WHERE id_teacher = '" . $this->getInfoTeacher('id_teacher') . "' 
-            ORDER BY ten_khoa DESC"),
-            'mon_hoc' => $this->get_list("SELECT * FROM `mon_hoc` WHERE id_teacher = '" . $this->getInfoTeacher('id_teacher') . "'ORDER BY id_mon DESC"),
-            'loai_lop' => $this->get_list("SELECT * FROM `loai_lop` WHERE id_teacher = '" . $this->getInfoTeacher('id_teacher') . "'ORDER BY id_loai DESC"),
-            'lien_ket' => $this->get_list("SELECT * FROM `lien_ket` WHERE id_teacher = '" . $this->getInfoTeacher('id_teacher') .
-                "'ORDER BY id_lienket DESC limit 5"),
+            'ung_ho' =>
+            $this->get_list(
+                "SELECT * FROM `ung_ho` WHERE isAlert = 1  AND id_teacher = {$this->getInfoTeacher('id_teacher')} ORDER BY id DESC"
+            ),
+
+            'hoc_ky' =>
+            $this->get_list(
+                "SELECT * FROM  `hoc_ky` WHERE id_teacher  = {$this->getInfoTeacher('id_teacher')} ORDER BY ten_hocky"
+            ),
+            'khoa' =>
+            $this->get_list(
+                "SELECT * FROM `khoa` WHERE id_teacher = {$this->getInfoTeacher('id_teacher')}  ORDER BY ten_khoa DESC"
+            ),
+            'mon_hoc' =>
+            $this->get_list(
+                "SELECT * FROM `mon_hoc` WHERE id_teacher = {$this->getInfoTeacher('id_teacher')} ORDER BY id_mon DESC"
+            ),
+            'loai_lop' =>
+            $this->get_list(
+                "SELECT * FROM `loai_lop` WHERE id_teacher = {$this->getInfoTeacher('id_teacher')} ORDER BY id_loai DESC"
+            ),
+            'lien_ket' =>
+            $this->get_list(
+                "SELECT * FROM `lien_ket` WHERE id_teacher = {$this->getInfoTeacher('id_teacher')} ORDER BY id_lienket DESC limit 5"
+            ),
         ];
 
         if (isset($_POST['is_alertDonate'])) {
             if (!empty($this->data['ung_ho'])) {
                 foreach ($this->data['ung_ho'] as $row) {
-                    $update_alert = $this->update_value('ung_ho', ['isAlert' => 2], "id = '" . $row['id'] . "'");
+                    $update_alert = $this->update_value('ung_ho', ['isAlert' => 2], "id = {$row['id']}");
                     if ($update_alert) {
                         $response['status'] = true;
                         $response['message'] = 'Chúng tôi đã nhận ủng hộ từ bạn. Xin cảm ơn!';
@@ -55,20 +69,17 @@ class TeacherModel extends Model
             $upload =  move_uploaded_file($_FILES['file-sv']['tmp_name'], $pathFile);
 
 
-            $ds_monhoc = $this->get_row("SELECT * FROM `mon_hoc`");
+            $data_mon_hoc = $this->get_row("SELECT * FROM `mon_hoc` WHERE 
+            id_mon = {$mon_hoc} AND
+            id_teacher = {$this->getInfoTeacher('id_teacher')} ");
 
-            $array_diem = explode(',', $ds_monhoc['diem']);
+
+            $array_diem = explode(',', $data_mon_hoc['diem']);
 
             foreach ($array_diem as  $value) {
                 $format_array_diem[$value] = null;
             }
 
-            // if (!empty($upload)) {
-            //     $objReader = PHPExcel_IOFactory::createReaderForFile($pathFile);
-            //     $objExcel = $objReader->load($pathFile);
-            //     $sheetData = $objExcel->getActiveSheet()->toArray('null', true, true, true);
-            //     print_r($sheetData);
-            // }
 
             if (!empty($upload)) {
 
@@ -104,17 +115,23 @@ class TeacherModel extends Model
                         'array_diem' => json_encode($format_array_diem),
                         'id_teacher' => $id_teacher
                     ];
-                    if (!$this->get_row("SELECT * FROM `diem_sv` WHERE 
-                    mssv = '" . $row[1] . "' AND id_mon = '$mon_hoc' ")) {
+                    if (!$this->get_row(
+                        "SELECT * FROM `diem_sv` WHERE mssv = '" . $row[1] . "'  AND id_mon = '$mon_hoc' AND id_lop = {$loai_lop}"
+
+                    )) {
                         $this->insert("diem_sv", $data_insert);
                     }
                 }
 
                 $response['data'] = [
-                    'lop' => $this->get_row("SELECT * FROM `loai_lop` WHERE id_loai = '$loai_lop' ")['ten_lop'],
-                    'mon' => $this->get_row("SELECT * FROM `mon_hoc` WHERE id_mon = '$mon_hoc' ")['ma_mon'],
+                    'lop' => $this->get_row("SELECT * FROM `loai_lop` 
+                    WHERE id_teacher = {$this->getInfoTeacher('id_teacher')} AND id_loai = {$loai_lop} ")['ten_lop'],
+                    'mon' => $this->get_row("SELECT * FROM `mon_hoc` WHERE id_teacher = 
+                    {$this->getInfoTeacher('id_teacher')} AND id_mon = {$mon_hoc} ")['ma_mon'],
                 ];
                 $response['status'] = true;
+
+
 
                 die(json_encode($response));
             } else {
@@ -144,48 +161,32 @@ class TeacherModel extends Model
     public function bang_diem()
     {
         # code...
-        $this->data = [
-            'lop_hoc' => $this->get_list("SELECT * FROM `loai_lop` ORDER BY id_loai DESC"),
-            'mon_hoc' => $this->get_list("SELECT * FROM `mon_hoc` ORDER BY id_mon DESC"),
 
-        ];
+
 
         if (isset($_GET['lop']) && !empty($_GET['lop'])) {
 
-            $this->data = [
-                'lop_hoc' => $this->get_list("SELECT * FROM `loai_lop` ORDER BY id_loai DESC"),
-                'mon_hoc' => $this->get_list("SELECT * FROM `mon_hoc` ORDER BY id_mon DESC"),
-                'bang_diem' => $this->get_list("SELECT diem_sv.* ,
-                `mon_hoc`.ma_mon,  `loai_lop`.ten_lop 
-                FROM diem_sv 
-                INNER JOIN `mon_hoc` on mon_hoc.id_mon   = diem_sv.id_mon 
-                INNER JOIN `loai_lop` on loai_lop.id_loai  = diem_sv.id_lop
-                INNER JOIN `khoa` on khoa.id_khoa  = loai_lop.id_khoa
-                WHERE loai_lop.ten_lop like '%" . $_GET['lop'] . "%' ORDER BY diem_sv.id_mon DESC
-                ")
-            ];
+
             if (isset($_GET['mon']) && !empty($_GET['mon'])) {
                 $this->data = [
-                    'lop_hoc' => $this->get_list("SELECT * FROM `loai_lop` ORDER BY id_loai DESC"),
-                    'diem_cua_mon' => $this->get_row("SELECT * FROM `mon_hoc`  WHERE mon_hoc.ma_mon = '" . $_GET['mon'] . "' ORDER BY id_mon DESC"),
-                    'mon_hoc' => $this->get_list("SELECT * FROM `mon_hoc` ORDER BY id_mon DESC"),
+                    'diem_cua_mon' => $this->get_row("SELECT * FROM `mon_hoc`  WHERE  id_teacher = '" . $this->getInfoTeacher('id_teacher') . "' AND mon_hoc.ma_mon = '" . $_GET['mon'] . "' ORDER BY id_mon DESC"),
+
                     'bang_diem' => $this->get_list("SELECT diem_sv.* ,
-                    `mon_hoc`.ma_mon,  `loai_lop`.ten_lop
+                    `mon_hoc`.ma_mon, 
+                    `loai_lop`.ten_lop
                     FROM diem_sv 
                     INNER JOIN `mon_hoc` on mon_hoc.id_mon   = diem_sv.id_mon 
                     INNER JOIN `loai_lop` on loai_lop.id_loai  = diem_sv.id_lop
                     INNER JOIN `khoa` on khoa.id_khoa  = loai_lop.id_khoa
-                    WHERE loai_lop.ten_lop  = '" . $_GET['lop'] . "' AND mon_hoc.ma_mon LIKE '%" . $_GET['mon'] . "%' ORDER BY diem_sv.id_mon DESC
+                    WHERE  diem_sv.id_teacher = '" . $this->getInfoTeacher('id_teacher') . "' AND
+                    loai_lop.ten_lop like '%" . $_GET['lop'] . "%' AND
+                    mon_hoc.ma_mon LIKE '%" . $_GET['mon'] . "%' ORDER BY diem_sv.id_mon DESC
                     ")
-                ];
-            } else {
-                $this->data = [
-                    'lop_hoc' => $this->get_list("SELECT * FROM `loai_lop` ORDER BY id_loai DESC"),
-                    'mon_hoc' => $this->get_list("SELECT * FROM `mon_hoc` ORDER BY id_mon DESC"),
-
                 ];
             }
         }
+        $this->data['lop_hoc'] =  $this->get_list("SELECT * FROM `loai_lop` WHERE id_teacher = '" . $this->getInfoTeacher('id_teacher') . "' ORDER BY id_loai DESC");
+        $this->data['mon_hoc'] =  $this->get_list("SELECT * FROM `mon_hoc` WHERE id_teacher = '" . $this->getInfoTeacher('id_teacher') . "' ORDER BY id_mon DESC");
 
 
         // edit dữ liệu điểm

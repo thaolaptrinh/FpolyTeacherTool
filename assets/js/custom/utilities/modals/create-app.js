@@ -89,7 +89,7 @@ var KTCreateApp = (function () {
       form_text.forEach((element) => {
         formData.append(
           element,
-          form.querySelector(`[name="${element}"]`).value
+          form.querySelector(`[name="${element}"]:checked:enabled`).value
         );
       });
 

@@ -35,8 +35,8 @@ class Auth extends Controller
   {
     # code...
     $this->model_home->client->revokeToken();
-    // unset($_SESSION['access_token']);
-    session_destroy();
+    unset($_SESSION['access_token']);
+    unset($_SESSION['user_data']);
     header('location: ' . BASE_URL(''));
   }
 }
