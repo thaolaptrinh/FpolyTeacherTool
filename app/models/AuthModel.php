@@ -103,7 +103,16 @@ class AuthModel extends Model
             'id_coso' =>  $data['coso'],
           ];
           $insert = $this->insert('teachers', $data_insert);
+
+
+
+
+
           if ($insert) {
+
+            $data_teacher = $this->get_row("SELECT * from `teachers` WHERE email = '" . $data_insert['email'] . "'");
+
+            $this->update_value('teachers', ['code_donate' => 'ungho' . $data_teacher['id_teacher']], "id_teacher = '" . $data_teacher['id_teacher'] . "'");
             $response['status'] = true;
             $response['message'] = 'Đăng ký thành công!';
             die(json_encode($response));

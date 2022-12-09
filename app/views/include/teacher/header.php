@@ -90,7 +90,7 @@ global $DB;
               extract($item); ?>
 
 
-              <div <?= isset($sub) ? 'data-kt-menu-trigger="{' . "default: 'click'" . " ,lg:'hover'" . '}"' : '' ?> data-kt-menu-placement="bottom-start" class="menu-item <?= route(0) == $path ? 'here show' : false ?>" menu-lg-down-accordion menu-sub-lg-down-indention me-0 me-lg-2">
+              <div <?= isset($sub) ? 'data-kt-menu-trigger="{' . "default: 'click'" . " ,lg:'hover'" . '}"' : '' ?> data-kt-menu-placement="bottom-start" class="menu-item <?= (route(0) == $path) || ((route(0) == '' && $path == 'dashboard')) ? 'here show' : false ?>" menu-lg-down-accordion menu-sub-lg-down-indention me-0 me-lg-2">
                 <?php
                 if (!isset($sub)) { ?>
                   <a class="menu-link py-3" href="<?= BASE_URL($path) ?>"><?= $name ?></a>

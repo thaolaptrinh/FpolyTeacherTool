@@ -271,7 +271,6 @@
           <h1 class="mb-3">Ủng hộ chúng tôi!</h1>
           <div class="text-muted fw-semibold fs-5">
             Nếu bạn muốn đóng góp vui lòng xem các thông tin thanh toán phía dưới. Xin cảm ơn!
-
           </div>
         </div>
         <div class="d-flex flex-column">
@@ -286,75 +285,113 @@
                       <input class="form-check-input" type="radio" name="plan" checked="checked" value="startup" />
                     </div>
                     <div class="flex-grow-1">
-                      <div class="d-flex align-items-center fs-2 fw-bold flex-wrap">MB BANK</div>
+                      <div class="d-flex align-items-center fs-2 fw-bold flex-wrap">MB Bank</div>
                       <div class="fw-semibold opacity-75">
-                        Ngân hàng Việt Nam
+                        Ngân hàng Quân Đội Việt Nam
                       </div>
                     </div>
                   </div>
 
                   <div class="ms-5">
-                    <span class="mb-2">đ</span>
-                    <span class="fs-2x fw-bold">1.000</span>
-                    <span class="fs-7 opacity-50">/
-                      <span data-kt-element="period">min</span></span>
+                    <img src="https://mbbank.com.vn/images/logo.png" style="max-width:60px" alt="logo-mbbank">
                   </div>
                 </label>
 
+                <label class="nav-link btn btn-outline btn-outline-dashed 
+                btn-color-dark btn-active btn-active-primary d-flex flex-stack text-start p-6  mb-6" data-bs-toggle="tab" data-bs-target="#kt_donate_momo">
+                  <div class="d-flex align-items-center me-2">
+                    <div class="form-check form-check-custom form-check-solid form-check-success flex-shrink-0 me-6">
+                      <input class="form-check-input" type="radio" name="plan" checked="checked" value="startup" />
+                    </div>
+                    <div class="flex-grow-1">
+                      <div class="d-flex align-items-center fs-2 fw-bold flex-wrap">Momo</div>
+                      <div class="fw-semibold opacity-75">
+                        Ví điện tử MOMO
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="ms-5">
+                    <img src="https://static.mservice.io/jk/momo.ico" style="max-width:40px;" alt="logo-momo">
+                  </div>
+                </label>
 
               </div>
+
             </div>
+
+
 
             <div class="col-lg-6">
               <div class="tab-content rounded h-100 bg-light p-10">
                 <div class="tab-pane fade show active" id="kt_donate_mbbank">
-                  <div class="pb-5">
-                    <h2 class="fw-bold text-dark">Thông tin thanh toán</h2>
-
+                  <div class="d-flex justify-content-center align-items-center">
+                    <img style="max-width:200px;" src="https://img.vietqr.io/image/MB-0010142787305-compact.png?amount=10000&addInfo=<?= $this->model_home->getInfoTeacher('code_donate') ?>&accountName=NGUYENVANTHAO" alt="">
+                    <div class="px-3">
+                      <h4>Quét mã QR để thanh toán</h4>
+                      <br>
+                      <a>Sử dụng <b> Internet Banking </b> hoặc ứng dụng camera hỗ trợ QR code để quét mã</a>
+                    </div>
                   </div>
 
                   <div class="pt-1">
+                    <div class="table-responsive">
+                      <table class="table table-flush align-middle table-row-bordered table-row-solid " id="kt_donate_table">
 
-                    <div class="d-flex align-items-center mb-1">
-                      <span class="fw-semibold fs-5 text-gray-700 flex-grow-1">
-                        <span class="badge py-3 px-4 fs-7 badge-light-success">Chủ tài khoản</span>
-                        <span class="fs-7"> NGUYEN VAN THAO
-                        </span>
+                        <tbody class="fs-6 fw-semibold text-gray-600">
+                          <tr>
+                            <td class="ps-9">
+                              <span class="badge badge-light-success fs-7 fw-semibold">Chủ tài khoản</span>
+                            </td>
+                            <td class="ps-0" data-bs-target="code">NGUYEN VAN THAO</td>
+                            <td>
+                              <button data-action="copy" class="btn btn-active-color-primary btn-icon btn-sm btn-outline-light">
+                                <span class="svg-icon svg-icon-2">
+                                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path opacity="0.5" d="M18 2H9C7.34315 2 6 3.34315 6 5H8C8 4.44772 8.44772 4 9 4H18C18.5523 4 19 4.44772 19 5V16C19 16.5523 18.5523 17 18 17V19C19.6569 19 21 17.6569 21 16V5C21 3.34315 19.6569 2 18 2Z" fill="currentColor"></path>
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M14.7857 7.125H6.21429C5.62255 7.125 5.14286 7.6007 5.14286 8.1875V18.8125C5.14286 19.3993 5.62255 19.875 6.21429 19.875H14.7857C15.3774 19.875 15.8571 19.3993 15.8571 18.8125V8.1875C15.8571 7.6007 15.3774 7.125 14.7857 7.125ZM6.21429 5C4.43908 5 3 6.42709 3 8.1875V18.8125C3 20.5729 4.43909 22 6.21429 22H14.7857C16.5609 22 18 20.5729 18 18.8125V8.1875C18 6.42709 16.5609 5 14.7857 5H6.21429Z" fill="currentColor"></path>
+                                  </svg>
+                                </span>
+                              </button>
+                            </td>
+                          </tr>
 
-                      </span>
-                      <span class="svg-icon svg-icon-1 svg-icon-success">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <rect opacity="0.3" x="2" y="2" width="20" height="20" rx="10" fill="currentColor" />
-                          <path d="M10.4343 12.4343L8.75 10.75C8.33579 10.3358 7.66421 10.3358 7.25 10.75C6.83579 11.1642 6.83579 11.8358 7.25 12.25L10.2929 15.2929C10.6834 15.6834 11.3166 15.6834 11.7071 15.2929L17.25 9.75C17.6642 9.33579 17.6642 8.66421 17.25 8.25C16.8358 7.83579 16.1642 7.83579 15.75 8.25L11.5657 12.4343C11.2533 12.7467 10.7467 12.7467 10.4343 12.4343Z" fill="currentColor" />
-                        </svg>
-                      </span>
-                    </div>
-                    <div class="d-flex align-items-center mb-1">
-                      <span class="fw-semibold fs-5 text-gray-700 flex-grow-1">
-                        <span class="badge py-3 px-4 fs-7 badge-light-success">Số tài khoản</span>
+                          <tr>
+                            <td class="ps-9">
+                              <span class="badge badge-light-success fs-7 fw-semibold">Số tài khoản</span>
+                            </td>
+                            <td class="ps-0" data-bs-target="code">0010142787305</td>
+                            <td>
+                              <button data-action="copy" class="btn btn-active-color-primary btn-icon btn-sm btn-outline-light">
+                                <span class="svg-icon svg-icon-2">
+                                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path opacity="0.5" d="M18 2H9C7.34315 2 6 3.34315 6 5H8C8 4.44772 8.44772 4 9 4H18C18.5523 4 19 4.44772 19 5V16C19 16.5523 18.5523 17 18 17V19C19.6569 19 21 17.6569 21 16V5C21 3.34315 19.6569 2 18 2Z" fill="currentColor"></path>
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M14.7857 7.125H6.21429C5.62255 7.125 5.14286 7.6007 5.14286 8.1875V18.8125C5.14286 19.3993 5.62255 19.875 6.21429 19.875H14.7857C15.3774 19.875 15.8571 19.3993 15.8571 18.8125V8.1875C15.8571 7.6007 15.3774 7.125 14.7857 7.125ZM6.21429 5C4.43908 5 3 6.42709 3 8.1875V18.8125C3 20.5729 4.43909 22 6.21429 22H14.7857C16.5609 22 18 20.5729 18 18.8125V8.1875C18 6.42709 16.5609 5 14.7857 5H6.21429Z" fill="currentColor"></path>
+                                  </svg>
+                                </span>
+                              </button>
+                            </td>
+                          </tr>
 
-                        <span class="fs-7">0010142787305</span>
+                          <tr>
+                            <td class="ps-9">
+                              <span class="badge badge-light-success fs-7 fw-semibold">Nội dung chuyển khoản</span>
+                            </td>
+                            <td class="ps-0" data-bs-target="code"><?= $this->model_home->getInfoTeacher('code_donate') ?></td>
+                            <td>
+                              <button data-action="copy" class="btn btn-active-color-primary btn-icon btn-sm btn-outline-light">
+                                <span class="svg-icon svg-icon-2">
+                                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path opacity="0.5" d="M18 2H9C7.34315 2 6 3.34315 6 5H8C8 4.44772 8.44772 4 9 4H18C18.5523 4 19 4.44772 19 5V16C19 16.5523 18.5523 17 18 17V19C19.6569 19 21 17.6569 21 16V5C21 3.34315 19.6569 2 18 2Z" fill="currentColor"></path>
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M14.7857 7.125H6.21429C5.62255 7.125 5.14286 7.6007 5.14286 8.1875V18.8125C5.14286 19.3993 5.62255 19.875 6.21429 19.875H14.7857C15.3774 19.875 15.8571 19.3993 15.8571 18.8125V8.1875C15.8571 7.6007 15.3774 7.125 14.7857 7.125ZM6.21429 5C4.43908 5 3 6.42709 3 8.1875V18.8125C3 20.5729 4.43909 22 6.21429 22H14.7857C16.5609 22 18 20.5729 18 18.8125V8.1875C18 6.42709 16.5609 5 14.7857 5H6.21429Z" fill="currentColor"></path>
+                                  </svg>
+                                </span>
+                              </button>
+                            </td>
+                          </tr>
 
-                      </span>
-                      <span class="svg-icon svg-icon-1 svg-icon-success">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <rect opacity="0.3" x="2" y="2" width="20" height="20" rx="10" fill="currentColor" />
-                          <path d="M10.4343 12.4343L8.75 10.75C8.33579 10.3358 7.66421 10.3358 7.25 10.75C6.83579 11.1642 6.83579 11.8358 7.25 12.25L10.2929 15.2929C10.6834 15.6834 11.3166 15.6834 11.7071 15.2929L17.25 9.75C17.6642 9.33579 17.6642 8.66421 17.25 8.25C16.8358 7.83579 16.1642 7.83579 15.75 8.25L11.5657 12.4343C11.2533 12.7467 10.7467 12.7467 10.4343 12.4343Z" fill="currentColor" />
-                        </svg>
-                      </span>
-                    </div>
-
-                    <div class="d-flex align-items-center mb-1">
-                      <span class="fw-semibold fs-5 text-gray-700 flex-grow-1">
-                        <span class="badge py-3 px-4 fs-7 badge-light-success">Nội dung chuyển khoản</span>
-                        <span class="fs-7"><?= $this->model_home->getInfoTeacher('code_donate') ?></span>
-                      </span>
-                      <span class="svg-icon svg-icon-1 svg-icon-success">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <rect opacity="0.3" x="2" y="2" width="20" height="20" rx="10" fill="currentColor" />
-                          <path d="M10.4343 12.4343L8.75 10.75C8.33579 10.3358 7.66421 10.3358 7.25 10.75C6.83579 11.1642 6.83579 11.8358 7.25 12.25L10.2929 15.2929C10.6834 15.6834 11.3166 15.6834 11.7071 15.2929L17.25 9.75C17.6642 9.33579 17.6642 8.66421 17.25 8.25C16.8358 7.83579 16.1642 7.83579 15.75 8.25L11.5657 12.4343C11.2533 12.7467 10.7467 12.7467 10.4343 12.4343Z" fill="currentColor" />
-                        </svg>
-                      </span>
+                        </tbody>
+                      </table>
                     </div>
 
                   </div>
@@ -363,8 +400,93 @@
                     <div class="border border-warning border-dashed rounded min-w-125px py-3 px-4 mb-3">
                       <div class="fw-semibold">
                         Vui lòng chuyển khoảng đúng nội dung để chúng tôi
-
                         biết bạn là ai và gửi lời cảm ơn đến bạn
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-pane fade show" id="kt_donate_momo">
+                  <div class="pb-5">
+                    <div class="d-flex justify-content-center align-items-center">
+                      <img style="max-width:200px;" src="https://chart.googleapis.com/chart?chs=500x500&cht=qr&chl=2|99|0345005746|||0|0|10000|<?= $this->model_home->getInfoTeacher('code_donate') ?>|transfer_myqr" alt="">
+                      <div class="px-3">
+                        <h4>Quét mã QR để thanh toán</h4>
+                        <br>
+                        <a>Sử dụng <b> App Momo </b> hoặc ứng dụng camera hỗ trợ QR code để quét mã</a>
+                      </div>
+
+                    </div>
+
+                    <div class="pt-1">
+
+                      <div class="table-responsive">
+                        <table class="table table-flush align-middle table-row-bordered table-row-solid " id="kt_donate_table">
+
+                          <tbody class="fs-6 fw-semibold text-gray-600">
+                            <tr>
+                              <td class="ps-9">
+                                <span class="badge badge-light-success fs-7 fw-semibold">Chủ tài khoản</span>
+                              </td>
+                              <td class="ps-0" data-bs-target="code">NGUYEN VAN THAO</td>
+                              <td>
+                                <button data-action="copy" class="btn btn-active-color-primary btn-icon btn-sm btn-outline-light">
+                                  <span class="svg-icon svg-icon-2">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                      <path opacity="0.5" d="M18 2H9C7.34315 2 6 3.34315 6 5H8C8 4.44772 8.44772 4 9 4H18C18.5523 4 19 4.44772 19 5V16C19 16.5523 18.5523 17 18 17V19C19.6569 19 21 17.6569 21 16V5C21 3.34315 19.6569 2 18 2Z" fill="currentColor"></path>
+                                      <path fill-rule="evenodd" clip-rule="evenodd" d="M14.7857 7.125H6.21429C5.62255 7.125 5.14286 7.6007 5.14286 8.1875V18.8125C5.14286 19.3993 5.62255 19.875 6.21429 19.875H14.7857C15.3774 19.875 15.8571 19.3993 15.8571 18.8125V8.1875C15.8571 7.6007 15.3774 7.125 14.7857 7.125ZM6.21429 5C4.43908 5 3 6.42709 3 8.1875V18.8125C3 20.5729 4.43909 22 6.21429 22H14.7857C16.5609 22 18 20.5729 18 18.8125V8.1875C18 6.42709 16.5609 5 14.7857 5H6.21429Z" fill="currentColor"></path>
+                                    </svg>
+                                  </span>
+                                </button>
+                              </td>
+                            </tr>
+
+                            <tr>
+                              <td class="ps-9">
+                                <span class="badge badge-light-success fs-7 fw-semibold">Số tài khoản</span>
+                              </td>
+                              <td class="ps-0" data-bs-target="code">0345005746</td>
+                              <td>
+                                <button data-action="copy" class="btn btn-active-color-primary btn-icon btn-sm btn-outline-light">
+                                  <span class="svg-icon svg-icon-2">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                      <path opacity="0.5" d="M18 2H9C7.34315 2 6 3.34315 6 5H8C8 4.44772 8.44772 4 9 4H18C18.5523 4 19 4.44772 19 5V16C19 16.5523 18.5523 17 18 17V19C19.6569 19 21 17.6569 21 16V5C21 3.34315 19.6569 2 18 2Z" fill="currentColor"></path>
+                                      <path fill-rule="evenodd" clip-rule="evenodd" d="M14.7857 7.125H6.21429C5.62255 7.125 5.14286 7.6007 5.14286 8.1875V18.8125C5.14286 19.3993 5.62255 19.875 6.21429 19.875H14.7857C15.3774 19.875 15.8571 19.3993 15.8571 18.8125V8.1875C15.8571 7.6007 15.3774 7.125 14.7857 7.125ZM6.21429 5C4.43908 5 3 6.42709 3 8.1875V18.8125C3 20.5729 4.43909 22 6.21429 22H14.7857C16.5609 22 18 20.5729 18 18.8125V8.1875C18 6.42709 16.5609 5 14.7857 5H6.21429Z" fill="currentColor"></path>
+                                    </svg>
+                                  </span>
+                                </button>
+                              </td>
+                            </tr>
+
+                            <tr>
+                              <td class="ps-9">
+                                <span class="badge badge-light-success fs-7 fw-semibold">Nội dung chuyển khoản</span>
+                              </td>
+                              <td class="ps-0" data-bs-target="code"><?= $this->model_home->getInfoTeacher('code_donate') ?></td>
+                              <td>
+                                <button data-action="copy" class="btn btn-active-color-primary btn-icon btn-sm btn-outline-light">
+                                  <span class="svg-icon svg-icon-2">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                      <path opacity="0.5" d="M18 2H9C7.34315 2 6 3.34315 6 5H8C8 4.44772 8.44772 4 9 4H18C18.5523 4 19 4.44772 19 5V16C19 16.5523 18.5523 17 18 17V19C19.6569 19 21 17.6569 21 16V5C21 3.34315 19.6569 2 18 2Z" fill="currentColor"></path>
+                                      <path fill-rule="evenodd" clip-rule="evenodd" d="M14.7857 7.125H6.21429C5.62255 7.125 5.14286 7.6007 5.14286 8.1875V18.8125C5.14286 19.3993 5.62255 19.875 6.21429 19.875H14.7857C15.3774 19.875 15.8571 19.3993 15.8571 18.8125V8.1875C15.8571 7.6007 15.3774 7.125 14.7857 7.125ZM6.21429 5C4.43908 5 3 6.42709 3 8.1875V18.8125C3 20.5729 4.43909 22 6.21429 22H14.7857C16.5609 22 18 20.5729 18 18.8125V8.1875C18 6.42709 16.5609 5 14.7857 5H6.21429Z" fill="currentColor"></path>
+                                    </svg>
+                                  </span>
+                                </button>
+                              </td>
+                            </tr>
+
+                          </tbody>
+                        </table>
+                      </div>
+
+                    </div>
+
+                    <div class="pt-5">
+                      <div class="border border-warning border-dashed rounded min-w-125px py-3 px-4 mb-3">
+                        <div class="fw-semibold">
+                          Vui lòng chuyển khoảng đúng nội dung để chúng tôi
+
+                          biết bạn là ai và gửi lời cảm ơn đến bạn
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -373,77 +495,79 @@
               </div>
             </div>
           </div>
-        </div>
-        <div class="d-flex flex-center flex-row-fluid pt-12">
-          <button type="reset" class="btn btn-light me-3" data-bs-dismiss="modal">Đóng </button>
+          <div class="d-flex flex-center flex-row-fluid pt-12">
+            <button type="reset" class="btn btn-light me-3" data-bs-dismiss="modal">Đóng </button>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
 
+
+
 <!-- <div class="modal fade" id="kt_modal_feedback" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered mw-650px">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2>Feedback</h2>
-        <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
-          <span class="svg-icon svg-icon-1">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="currentColor" />
-              <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="currentColor" />
-            </svg>
-          </span>
+    <div class="modal-dialog modal-dialog-centered mw-650px">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Feedback</h2>
+          <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+            <span class="svg-icon svg-icon-1">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="currentColor" />
+                <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="currentColor" />
+              </svg>
+            </span>
+          </div>
+        </div>
+        <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
+          <form id="kt_modal_new_card_form" class="form" action="#">
+
+            <div class="row mb-10">
+
+              <div class="col-md-12 fv-row mb-7">
+                <label class="d-flex align-items-center fs-6 fw-semibold form-label mb-2">
+                  <span class="required">Vấn đề liên quan</span>
+                  <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="Vấn đề gặp phải"></i>
+                </label>
+
+                <select name="type_feedback" class="form-select form-select-solid" data-control="select2" data-hide-search="true" data-placeholder="Vấn đề">
+                  <option></option>
+                  <option value="1">Hệ thống</option>
+                  <option value="2">Các chức năng</option>
+                  <option value="0">Vấn đề khác</option>
+                </select>
+
+
+              </div>
+
+              <div class="col-md-12 fv-row">
+                <label class="d-flex align-items-center fs-6 fw-semibold form-label mb-2">
+                  <span class="required">Nội dung</span>
+                  <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="Nội dung"></i>
+                </label>
+
+                <textarea class="form-control form-control-solid" name="notes"></textarea>
+
+
+              </div>
+
+
+
+
+            </div>
+
+
+            <div class="text-center pt-15">
+              <button type="reset" id="kt_modal_new_card_cancel" class="btn btn-light me-3">Làm mới</button>
+              <button type="submit" id="kt_modal_new_card_submit" class="btn btn-primary">
+                <span class="indicator-label">Submit</span>
+                <span class="indicator-progress">Please wait...
+                  <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+              </button>
+            </div>
+          </form>
         </div>
       </div>
-      <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
-        <form id="kt_modal_new_card_form" class="form" action="#">
-
-          <div class="row mb-10">
-
-            <div class="col-md-12 fv-row mb-7">
-              <label class="d-flex align-items-center fs-6 fw-semibold form-label mb-2">
-                <span class="required">Vấn đề liên quan</span>
-                <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="Vấn đề gặp phải"></i>
-              </label>
-
-              <select name="type_feedback" class="form-select form-select-solid" data-control="select2" data-hide-search="true" data-placeholder="Vấn đề">
-                <option></option>
-                <option value="1">Hệ thống</option>
-                <option value="2">Các chức năng</option>
-                <option value="0">Vấn đề khác</option>
-              </select>
-
-
-            </div>
-
-            <div class="col-md-12 fv-row">
-              <label class="d-flex align-items-center fs-6 fw-semibold form-label mb-2">
-                <span class="required">Nội dung</span>
-                <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="Nội dung"></i>
-              </label>
-
-              <textarea class="form-control form-control-solid" name="notes"></textarea>
-
-
-            </div>
-
-
-
-
-          </div>
-
-
-          <div class="text-center pt-15">
-            <button type="reset" id="kt_modal_new_card_cancel" class="btn btn-light me-3">Làm mới</button>
-            <button type="submit" id="kt_modal_new_card_submit" class="btn btn-primary">
-              <span class="indicator-label">Submit</span>
-              <span class="indicator-progress">Please wait...
-                <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
-            </button>
-          </div>
-        </form>
-      </div>
     </div>
-  </div>
-</div> -->
+  </div> -->

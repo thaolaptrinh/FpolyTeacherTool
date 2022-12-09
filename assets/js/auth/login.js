@@ -98,8 +98,6 @@ var KTSigninGeneral = (function () {
               .post(`${base_url + "auth/login"}`, formData)
               .then((response) => {
                 if (response.data.status) {
-                  console.log(localStorage.getItem("user_pass"));
-
                   if (localStorage.getItem("is_remember")) {
                     localStorage.setItem("user_email", formData.get("email"));
                     localStorage.setItem("user_pass", formData.get("password"));

@@ -17,7 +17,7 @@ define('PORT', '2003');
 
 class Database
 {
-  private $conn;
+  public $conn;
 
 
   function connect()
@@ -84,11 +84,14 @@ class Database
   function getInfoTeacher($data)
   {
     $this->connect();
-    $row = $this->conn->query("SELECT * FROM `teachers`
-    INNER JOIN `co_so` on co_so.id_coso = teachers.id_coso
-     WHERE `email` = '" . $_SESSION['email'] . "' ")->fetch_array();
-    if ($row) {
-      return $row[$data];
+    if (isset($_SESSION['email'])) {
+      $row = $this->conn->query(
+        "SELECT * FROM `teachers`INNER JOIN `co_so` on co_so.id_coso = teachers.id_coso WHERE `email` = '" . $_SESSION['email'] . "' "
+      )->fetch_array();
+      if ($row) {
+        return $row[$data];
+      }
+      return false;
     }
     return false;
   }

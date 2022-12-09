@@ -1,5 +1,5 @@
 <?php require_once 'app/views/include/head.php'; ?>
-<div class="d-fle  flex-column flex-root app-root" id="kt_app_root">
+<div class="d-flex  flex-column flex-root app-root" id="kt_app_root">
   <div class="app-page flex-column flex-column-fluid" id="kt_app_page">
     <?php require_once 'app/views/include/teacher/header.php'; ?>
     <div class="app-wrapper flex-column flex-row-fluid" id="kt_app_wrapper">
@@ -323,7 +323,7 @@
     </div>
   </div>
 </div>
-</div>
+
 
 <?php require_once 'app/views/include/teacher/widget.php'; ?>
 <?php require_once 'app/views/include/end.php'; ?>

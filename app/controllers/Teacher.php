@@ -190,6 +190,7 @@ class Teacher extends  Controller
   public function logout()
   {
     # code...
-    logout();
+    unset($_SESSION['email']);
+    header("Location: " . BASE_URL('auth/login'));
   }
 }

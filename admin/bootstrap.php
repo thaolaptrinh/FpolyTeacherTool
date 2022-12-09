@@ -4,12 +4,13 @@ define('_DIR_ROOT', __DIR__);
 
 
 if (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') {
-  $base_url = 'https://' . $_SERVER['HTTP_HOST'] . '/admin';
-  $base = 'https://' . $_SERVER['HTTP_HOST'] . '/admin';
+  $base_url = 'https://' . $_SERVER['HTTP_HOST'] . '/fpoly_teacher_tool/admin/';
+  $base = 'https://' . $_SERVER['HTTP_HOST'] . '/fpoly_teacher_tool/';
 } else {
   $base_url = 'http://' . $_SERVER['HTTP_HOST'] . '/fpoly_teacher_tool/admin/';
   $base = 'http://' . $_SERVER['HTTP_HOST'] . '/fpoly_teacher_tool/';
-  // $base_url = 'http://' . $_SERVER['HTTP_HOST'] . '/';
+  // $base_url = 'http://' . $_SERVER['HTTP_HOST'] . '/admin';
+  // $base_url = 'http://' . $_SERVER['HTTP_HOST'] . '';
 }
 
 function BASE_URL($url)

@@ -170,14 +170,11 @@
               <td> <?= $index ?> </td>
               <td> <?= $noi_dung ?> </td>
               <td>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" style=" width: 1.4em; height: 1.4em;" <?= $status == '2' ? 'checked' : false; ?> data-id1="<?= $id ?>" name="status<?= $id ?>" value="2">
-                  <label class="form-check-label">Đang kích hoạt</label>
-                </div>
-                <div class=" form-check form-check-inline">
-                  <input class="form-check-input" type="radio" style=" width: 1.4em;height: 1.4em;" <?= $status == '1' ? 'checked' : false;  ?> data-id1="<?= $id ?>" name="status<?= $id ?>" value="1">
-                  <label class="form-check-label">Đã vô hiệu hóa</label>
-                </div>
+                <span class="badge py-3 px-4 fs-7 badge-light-<?= $status == '2' ? 'success' : 'warning'; ?>">
+                <?= $status == '2' ? 'Đang kích hoạt' : 'Vô hiệu hóa'; ?></span>
+
+
+
               </td>
 
               <td class="text-end">

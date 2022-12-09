@@ -1,12 +1,11 @@
 
 
 <?php
-date_default_timezone_set('Asia/Ho_Chi_Minh');
+require_once '../configs/Database.php';
+require_once '../configs/Function.php';
 $time1 = date("YmdHis", time() - 60 * 60 * 24 * 1) . '00';
 $time2 = date("YmdHis") . '00';
 $todate = date("d/m/Y");
-require_once '../configs/Database.php';
-require_once '../configs/Function.php';
 
 
 
