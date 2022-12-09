@@ -90,8 +90,7 @@ global $DB;
               extract($item); ?>
 
 
-              <div <?= isset($sub) ? 'data-kt-menu-trigger="{' . "default: 'click'" . " ,lg:'hover'" . '}"' : '' ?>
-               data-kt-menu-placement="bottom-start" class="menu-item <?= route(0) == $path ? 'here show' : false ?>" menu-lg-down-accordion menu-sub-lg-down-indention me-0 me-lg-2">
+              <div <?= isset($sub) ? 'data-kt-menu-trigger="{' . "default: 'click'" . " ,lg:'hover'" . '}"' : '' ?> data-kt-menu-placement="bottom-start" class="menu-item <?= route(0) == $path ? 'here show' : false ?>" menu-lg-down-accordion menu-sub-lg-down-indention me-0 me-lg-2">
                 <?php
                 if (!isset($sub)) { ?>
                   <a class="menu-link py-3" href="<?= BASE_URL($path) ?>"><?= $name ?></a>
@@ -137,7 +136,11 @@ global $DB;
         <!--begin::User menu-->
         <div class="app-navbar-item ms-3" id="kt_header_user_menu_toggle">
           <!--begin:Info-->
-
+          <div class="text-white mx-5 px-5">
+            <marquee>
+              <?= isset($this->data['thanh_ngu']['noi_dung']) ?  $this->data['thanh_ngu']['noi_dung'] : 'Đừng sợ phí công' ?>
+            </marquee>
+          </div>
 
           <div class="text-end d-none d-sm-flex flex-column justify-content-center me-3">
             <a href="" class="text-white text-hover-primary fs-6 fw-bold">Giáo Viên</a>
@@ -312,6 +315,7 @@ global $DB;
           </div>
         </div>
         <a href="" class="btn btn-sm btn-primary py-3" data-bs-toggle="modal" data-bs-target="#kt_modal_create_app">Tạo bảng điểm</span></a>
+
       </div>
 
     </div>

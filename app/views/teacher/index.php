@@ -113,77 +113,40 @@
     <div class="card border-0">
 
       <div class="card-body py-12">
-
+        <button class="btn btn-light-success fs-3 fw-bolder w-100 py-5 mb-13" data-bs-toggle="modal" data-bs-target="#kt_modal_donate">Ủng hộ chúng tôi</button>
         <div class="d-flex border border-primary border-dashed rounded p-5 bg-light-primary mb-6">
-
           <span class="me-5">
-
             <span class="svg-icon svg-icon-3x svg-icon-primary">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect opacity="0.3" x="2" y="2" width="20" height="20" rx="10" fill="currentColor" />
-                <rect x="11" y="14" width="7" height="2" rx="1" transform="rotate(-90 11 14)" fill="currentColor" />
-                <rect x="11" y="17" width="2" height="2" rx="1" transform="rotate(-90 11 17)" fill="currentColor" />
+                <rect opacity="0.3" x="2" y="2" width="20" height="20" rx="10" fill="currentColor"></rect>
+                <rect x="11" y="14" width="7" height="2" rx="1" transform="rotate(-90 11 14)" fill="currentColor"></rect>
+                <rect x="11" y="17" width="2" height="2" rx="1" transform="rotate(-90 11 17)" fill="currentColor"></rect>
               </svg>
             </span>
-
           </span>
-
           <div class="me-2">
             <a href="#" class="text-gray-800 text-hover-primary fs-4 fw-bolder">Thông báo!</a>
-            <span class="text-gray-700 fw-semibold d-block fs-5">Đây là thông báo của chúng tôi</span>
+            <span class="text-gray-700 fw-semibold d-block fs-5">
+              Ứng dụng đang trong giai đoạn phát triển nếu có vấn đề vui lòng báo cáo hoặc góp ý
+            </span>
           </div>
-
         </div>
-
+        <button class="btn btn-primary fs-3 fw-bolder w-100 py-5" data-bs-toggle="modal" data-bs-target="#kt_modal_feedback">
+          Feedback</button>
       </div>
+
     </div>
 
   </div>
 
   <div class="col-xxl-8 mb-5 mb-xl-10">
 
-    <div class="card border-0 mb-5 mb-xl-11" data-theme="light" style="background-color: #844aff">
-      <div class="card-body py-0">
-        <div class="row align-items-center lh-1 h-100">
-          <div class="col-7 ps-xl-10 pe-5">
-
-            <div class="fs-2 fw-bold text-white mb-6">
-              <i>“<?= isset($this->data['thanh_ngu']['noi_dung']) ?  $this->data['thanh_ngu']['noi_dung'] : 'Đừng sợ phí công' ?>”</i>
-            </div>
-
-
-            <div class="fs-2qx fw-bold text-white mb-6">
-              Xin chào Thầy/Cô
-            </div>
-
-
-
-            <span class="fw-semibold text-white fs-6 mb-8 d-block opacity-75">
-              Website quản lý điểm sinh viên dành cho Giáo viên FPT Polytechnic do sinh viên trường phát triển.
-            </span>
-
-
-
-            <div class="d-flex d-grid gap-2">
-              <a href="#" class="btn btn-success me-lg-2" data-bs-toggle="modal" data-bs-target="#kt_modal_donate">
-                Ủng hộ chúng tôi
-              </a>
-            </div>
-          </div>
-
-          <div class="col-5 pt-5 pt-lg-15">
-            <div class="bgi-no-repeat bgi-size-contain bgi-position-x-end bgi-position-y-bottom h-325px" style="background-image:url(<?= BASE_URL('assets/media/svg/8.svg') ?>)"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <div class="card card-flush border-0">
       <div class="card-header pt-7">
         <h3 class="card-title align-items-start flex-column">
           <span class="card-label fs-3 fw-bold text-gray-800">Lịch dạy</span>
           <span class="text-gray-400 mt-1 fw-semibold fs-6">
-            Lựa chọn thời gian hiện thị</span>
+            Lựa chọn thời gian hiển thị</span>
         </h3>
         <div class="card-toolbar">
           <div data-kt-daterangepicker="true" data-kt-daterangepicker-opens="left" class="btn btn-sm btn-light d-flex align-items-center px-4">
@@ -418,3 +381,69 @@
     </div>
   </div>
 </div>
+
+<!-- <div class="modal fade" id="kt_modal_feedback" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered mw-650px">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Feedback</h2>
+        <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+          <span class="svg-icon svg-icon-1">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="currentColor" />
+              <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="currentColor" />
+            </svg>
+          </span>
+        </div>
+      </div>
+      <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
+        <form id="kt_modal_new_card_form" class="form" action="#">
+
+          <div class="row mb-10">
+
+            <div class="col-md-12 fv-row mb-7">
+              <label class="d-flex align-items-center fs-6 fw-semibold form-label mb-2">
+                <span class="required">Vấn đề liên quan</span>
+                <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="Vấn đề gặp phải"></i>
+              </label>
+
+              <select name="type_feedback" class="form-select form-select-solid" data-control="select2" data-hide-search="true" data-placeholder="Vấn đề">
+                <option></option>
+                <option value="1">Hệ thống</option>
+                <option value="2">Các chức năng</option>
+                <option value="0">Vấn đề khác</option>
+              </select>
+
+
+            </div>
+
+            <div class="col-md-12 fv-row">
+              <label class="d-flex align-items-center fs-6 fw-semibold form-label mb-2">
+                <span class="required">Nội dung</span>
+                <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="Nội dung"></i>
+              </label>
+
+              <textarea class="form-control form-control-solid" name="notes"></textarea>
+
+
+            </div>
+
+
+
+
+          </div>
+
+
+          <div class="text-center pt-15">
+            <button type="reset" id="kt_modal_new_card_cancel" class="btn btn-light me-3">Làm mới</button>
+            <button type="submit" id="kt_modal_new_card_submit" class="btn btn-primary">
+              <span class="indicator-label">Submit</span>
+              <span class="indicator-progress">Please wait...
+                <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div> -->
