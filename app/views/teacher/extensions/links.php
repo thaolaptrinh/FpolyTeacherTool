@@ -69,7 +69,7 @@
                     <div class="fv-plugins-message-container invalid-feedback"></div>
                   </div>
                   <div class="fv-row mb-7 fv-plugins-icon-container">
-                    <label class="required fw-semibold fs-6 mb-2">Mô tả</label>
+                    <label class=" fw-semibold fs-6 mb-2">Mô tả</label>
                     <textarea name="link_mota_update" class="form-control form-control-solid mb-3 mb-lg-0">Ap trường</textarea>
                     <div class="fv-plugins-message-container invalid-feedback"></div>
                   </div>
@@ -118,7 +118,7 @@
                     <div class="fv-plugins-message-container invalid-feedback"></div>
                   </div>
                   <div class="fv-row mb-7 fv-plugins-icon-container">
-                    <label class="required fw-semibold fs-6 mb-2">Mô tả</label>
+                    <label class=" fw-semibold fs-6 mb-2">Mô tả</label>
                     <textarea name="link_mota" class="form-control form-control-solid mb-3 mb-lg-0">Ap trường</textarea>
                     <div class="fv-plugins-message-container invalid-feedback"></div>
                   </div>

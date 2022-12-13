@@ -94,7 +94,7 @@ var KTULinksList = (function () {
         const target = parent.querySelectorAll("td")[1];
         // SweetAlert2 pop up --- official docs reference: https://sweetalert2.github.io/
 
-        formData.append("is_removelink", true);
+        formData.append("is_delete", true);
         formData.append("id", id);
 
         Swal.fire({

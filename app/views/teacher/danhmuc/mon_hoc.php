@@ -72,9 +72,10 @@
 
 
 
-
+                  <!-- 
                   <div class="fv-row mb-7 fv-plugins-icon-container">
                     <label class="required fw-semibold fs-6 mb-2">Điểm
+
                     </label>
                     <i class="fas fa-question-circle ms-2 fs-7" data-bs-toggle="tooltip" title="Thứ tự điểm theo thứ tự click chọn"></i>
                     <br>
@@ -86,15 +87,17 @@
                           <input class="form-check-input" type="checkbox" name="diem_update" value="<?= $row['ten_diem'] ?>">
                           <label><?= $row['ten_diem'] ?></label>
                         </div>
-                    <?php }
-                    } ?>
+                      <?php } ?>
 
-                  </div>
+
+                    <?php } ?>
+
+                  </div> -->
 
 
 
                   <div class="fv-row mb-7 fv-plugins-icon-container">
-                    <label class="required fw-semibold fs-6 mb-2">Ghi chú</label>
+                    <label class=" fw-semibold fs-6 mb-2">Ghi chú</label>
                     <input type="text" name="ghi_chu_update" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="">
                   </div>
 
@@ -149,23 +152,46 @@
                   <div class="fv-row mb-7 fv-plugins-icon-container">
                     <label class="required fw-semibold fs-6 mb-2">Điểm
                     </label>
-                    <i class="fas fa-question-circle ms-2 fs-7" data-bs-toggle="tooltip" title="Thứ tự điểm theo thứ tự click chọn"></i>
+                    <i class="fas fa-question-circle ms-2 fs-7" data-bs-toggle="tooltip" title="Thứ tự điểm theo thứ tự click chọn (Vui lòng chọn thật kỹ vì điểm sẽ sau khi tạo sẽ không chỉnh sửa được)"></i>
+
+                    <a href="<?= BASE_URL('danh-muc/loai-diem') ?>" target="_blank">Thêm mới</a>
                     <br>
                     <?php
                     if (isset($this->model_home->data['loai_diem']) && !empty($this->model_home->data['loai_diem'])) {
-                      $data = $this->model_home->data['loai_diem'];
-                      foreach ($data as $row) { ?>
+                      $data = $this->model_home->data['loai_diem']; ?>
+
+                      <div class="p-2 form-check form-check-sm form-check-custom form-check-solid d-inline-block">
+                        <input class="form-check-input" type="checkbox" name="all" value="">
+                        <label>ALL</label>
+                      </div>
+
+
+                      <div class="p-2 form-check form-check-sm form-check-custom form-check-solid d-inline-block">
+                        <input class="form-check-input" type="checkbox" name="4_lab_dau" value="">
+                        <label>4 Lab đầu</label>
+                      </div>
+
+                      <div class="p-2 form-check form-check-sm form-check-custom form-check-solid d-inline-block">
+                        <input class="form-check-input" type="checkbox" name="asm" value="">
+                        <label>Điểm ASM</label>
+                      </div>
+                      <div class="p-2 form-check form-check-sm form-check-custom form-check-solid d-inline-block">
+                        <input class="form-check-input" type="checkbox" name="8_quiz" value="">
+                        <label>8 Quiz</label>
+                      </div>
+                      <br>
+                      <?php foreach ($data as $row) { ?>
                         <div class="p-2 form-check form-check-sm form-check-custom form-check-solid d-inline-block">
                           <input class="form-check-input" type="checkbox" name="diem" value="<?= $row['ten_diem'] ?>">
                           <label><?= $row['ten_diem'] ?></label>
                         </div>
-                    <?php }
-                    } ?>
+                      <?php } ?>
+                    <?php  } ?>
 
                   </div>
 
                   <div class="fv-row mb-7 fv-plugins-icon-container">
-                    <label class="required fw-semibold fs-6 mb-2">Ghi chú</label>
+                    <label class="fw-semibold fs-6 mb-2">Ghi chú</label>
                     <textarea name="ghi_chu" class="form-control form-control-solid mb-3 mb-lg-0"></textarea>
                   </div>
 

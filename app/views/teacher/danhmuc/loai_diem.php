@@ -100,7 +100,7 @@
                 <div class="d-flex flex-column scroll-y me-n7 pe-7" id="kt_modal_add_scroll" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_modal_add_header" data-kt-scroll-wrappers="#kt_modal_add_scroll" data-kt-scroll-offset="300px">
                   <div class="fv-row mb-7 fv-plugins-icon-container">
                     <label class="required fw-semibold fs-6 mb-2">Tên loại điểm</label>
-                    <input type="text" name="ten_diem" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="LAB1" value="LAB1">
+                    <input type="text" name="ten_diem" class="form-control form-control-solid mb-3 mb-lg-0">
                   </div>
 
                 </div>

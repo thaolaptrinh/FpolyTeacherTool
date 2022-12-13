@@ -23,13 +23,26 @@
 <script>
   let base_url = $("#base_url").attr("href");
   let page_target = $("#base_url").attr("page_target");
-
-  if (page_target == 'bang-diem') {
-    $('#app-container').removeClass('container-xxl');
-  }
 </script>
 
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+
+<?php if ($page_target == 'index') { ?>
+  <script src="<?= BASE_URL('assets/js/index.js') ?>"></script>
+<?php } elseif ($page_target == 'teachers') { ?>
+  <script src="<?= BASE_URL('assets/js/teacher/table.js') ?>"></script>
+
+<?php } elseif ($page_target == 'co_so') { ?>
+  <script src="<?= BASE_URL('assets/js/coso/table.js') ?>"></script>
+  <script src="<?= BASE_URL('assets/js/coso/add.js') ?>"></script>
+  <script src="<?= BASE_URL('assets/js/coso/update.js') ?>"></script>
+
+<?php } elseif ($page_target == 'site') { ?>
+  <script src="<?= BASE_URL('assets/js/index.js') ?>"></script>
+  <script src="<?= BASE_URL('assets/js/site/site.js') ?>"></script>
+
+<?php } ?>
 
 
 </body>

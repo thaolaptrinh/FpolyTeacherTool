@@ -11,29 +11,35 @@ class TeacherModel extends Model
     {
         # code...
         $this->data = [
-            'hoc_ky' =>
-            $this->get_list(
-                "SELECT * FROM  `hoc_ky` WHERE id_teacher = '" . $this->getInfoTeacher('id_teacher') . "' ORDER BY ten_hocky"
-            ),
+            'hoc_ky' => $this->get_list("SELECT * FROM  `hoc_ky` 
+            WHERE id_teacher  = '" . $this->getInfoTeacher('id_teacher') . "' 
+            order by case 
+            when ten_hocky LIKE '%spring%' then 1 
+            when ten_hocky LIKE '%summer%'  then 2 
+            when ten_hocky LIKE '%fall%'  then 3
+            end
+            , reverse(reverse(ten_hocky) + 0) + 0 DESC"),
+
+
             'khoa' =>
             $this->get_list(
                 "SELECT * FROM `khoa` WHERE id_teacher = '" . $this->getInfoTeacher('id_teacher') . "'  ORDER BY ten_khoa DESC"
             ),
             'mon_hoc' =>
             $this->get_list(
-                "SELECT * FROM `mon_hoc` WHERE id_teacher = id_teacher = '" . $this->getInfoTeacher('id_teacher') . "' ORDER BY id_mon DESC"
+                "SELECT * FROM `mon_hoc` WHERE id_teacher = '" . $this->getInfoTeacher('id_teacher') . "' ORDER BY id_mon DESC"
             ),
             'loai_lop' =>
             $this->get_list(
-                "SELECT * FROM `loai_lop` WHERE id_teacher = id_teacher = '" . $this->getInfoTeacher('id_teacher') . "' ORDER BY id_loai DESC"
+                "SELECT * FROM `loai_lop` WHERE  id_teacher = '" . $this->getInfoTeacher('id_teacher') . "' ORDER BY id_loai DESC"
             ),
             'lien_ket' =>
             $this->get_list(
-                "SELECT * FROM `lien_ket` WHERE id_teacher = id_teacher = '" . $this->getInfoTeacher('id_teacher') . "'  ORDER BY id_lienket DESC limit 5"
+                "SELECT * FROM `lien_ket` WHERE id_teacher = '" . $this->getInfoTeacher('id_teacher') . "'  ORDER BY id_lienket DESC limit 5"
             ),
         ];
 
-        
+
 
 
         if (isset($_POST["is_import"])) {
@@ -133,9 +139,20 @@ class TeacherModel extends Model
             INNER JOIN mon_hoc ON lich_day.id_mon = mon_hoc.id_mon            
             WHERE lich_day.id_teacher = '" . $this->getInfoTeacher('id_teacher') . "' ORDER BY lich_day.id DESC"),
             'thanh_ngu' => $this->get_row("SELECT * FROM `thanh_ngu` WHERE id_teacher = '" . $this->getInfoTeacher('id_teacher') . "' AND status = '2' ORDER BY rand() LIMIT 1"),
-
-
         ];
+
+        if (isset($_GET['hoc_ky'])) {
+            $hoc_ky = $_GET['hoc_ky'];
+
+            $this->data = [
+                'lich_day' => $this->get_list("SELECT lich_day.*, loai_lop.ten_lop, mon_hoc.ten_mon, mon_hoc.ma_mon FROM `lich_day`
+                INNER JOIN loai_lop ON lich_day.id_lop = loai_lop.id_loai
+                INNER JOIN mon_hoc ON lich_day.id_mon = mon_hoc.id_mon            
+                WHERE lich_day.id_hocky = $hoc_ky AND
+                lich_day.id_teacher = '" . $this->getInfoTeacher('id_teacher') . "' ORDER BY lich_day.id DESC"),
+                'thanh_ngu' => $this->get_row("SELECT * FROM `thanh_ngu` WHERE id_teacher = '" . $this->getInfoTeacher('id_teacher') . "' AND status = '2' ORDER BY rand() LIMIT 1"),
+            ];
+        }
     }
 
     public function bang_diem()
@@ -367,67 +384,29 @@ class TeacherModel extends Model
         # code...
 
 
-        $this->data = [
-            'lien_ket' => $this->get_list("SELECT * FROM `lien_ket` WHERE id_teacher = '" . $this->getInfoTeacher('id_teacher') . "'"),
-        ];
-
         if (isset($_POST['is_detail'])) {
-            $id = $_POST['id'];
-            $response['data'] = $this->get_row("SELECT * FROM `lien_ket` WHERE id_lienket = '$id'");
-            die(json_encode($response));
-        }
-
-        if (isset($_POST['is_updatelink'])) {
-            $id = $_POST['id'];
+            $this->get_item(
+                "SELECT * FROM `lien_ket` WHERE id_lienket = '" . $_POST['id'] . "'"
+            );
+        } elseif (isset($_POST['is_update'])) {
             $data_post = [
                 'ten' => check_string($_POST['link_name_update']),
                 'url' => check_string($_POST['link_url_update']),
                 'mo_ta' => check_string($_POST['link_mota_update']),
             ];
 
-            $result = array_filter($data_post, 'myFilter');
+            $data_required = [
+                'ten' => check_string($_POST['link_name_update']),
+                'url' => check_string($_POST['link_url_update']),
+            ];
 
-
-            if (!($result)) {
-
-                $result = $this->update_value('lien_ket', $data_post, "id_lienket = '$id'");
-
-                if ($result) {
-                    $response['status'] = true;
-                    $response['message'] = 'Bạn đã cập nhật dữ liệu thành công!';
-                    die(json_encode($response));
-                } else {
-                    $response['status'] = false;
-                    $response['message'] = 'Cập nhật thất bại!';
-                    die(json_encode($response));
-                }
-            } else {
-                $response['status'] = false;
-                $response['message'] = 'Vui lòng không để trống dữ liệu';
-                die(json_encode($response));
-            }
-        }
-
-
-
-
-        if (isset($_POST['is_removelink'])) {
-
-            $id = $_POST['id'];
-            $result =  $this->remove('lien_ket', "id_lienket = '$id'");
-            if ($result) {
-                $response['status'] = true;
-                $response['message'] = 'Xóa dữ liệu thành công!';
-                die(json_encode($response));
-            } else {
-                $response['status'] = true;
-                $response['message'] = 'Xóa dữ liệu không thành công!';
-                die(json_encode($response));
-            }
-        }
-
-
-        if (isset($_POST['is_addlink'])) {
+            $this->update_item(
+                "lien_ket",
+                $data_post,
+                "id_lienket = '" . $_POST['id'] . "'",
+                $data_required,
+            );
+        } elseif (isset($_POST['is_add'])) {
 
             $data_insert = [
                 'ten' => check_string($_POST['link_name']),
@@ -436,27 +415,21 @@ class TeacherModel extends Model
                 'id_teacher' => $this->getInfoTeacher('id_teacher'),
 
             ];
-
-            $result = array_filter($data_insert, 'myFilter');
-
-            if (!$result) {
-
-                $is_insert  = $this->insert('lien_ket', $data_insert);
-
-                if ($is_insert) {
-                    $response['status'] = true;
-                    $response['message'] = 'Thêm mới thành công!';
-                    die(json_encode($response));
-                } else {
-                    $response['status'] = false;
-                    $response['message'] = 'Đã có lỗi xảy ra!';
-                    die(json_encode($response));
-                }
-            } else {
-                $response['status'] = false;
-                $response['message'] = 'Đã có lỗi xảy ra!';
-                die(json_encode($response));
-            }
+            $data_required = [
+                'ten' => check_string($_POST['link_name']),
+                'url' => check_string($_POST['link_url']),
+                'id_teacher' => $this->getInfoTeacher('id_teacher'),
+            ];
+            $this->add_item(
+                "lien_ket",
+                $data_insert,
+                $data_required
+            );
+        } elseif (isset($_POST['is_delete'])) {
+            $this->delete_item(
+                'lien_ket',
+                "id_lienket = '" . $_POST['id'] . "'"
+            );
         }
     }
 
@@ -517,7 +490,6 @@ class TeacherModel extends Model
             when ten_hocky LIKE '%summer%'  then 2 
             when ten_hocky LIKE '%fall%'  then 3
             end
-
             , reverse(reverse(ten_hocky) + 0) + 0 DESC"),
         ];
 
@@ -575,10 +547,16 @@ class TeacherModel extends Model
                 'mo_ta' => check_string($_POST['mo_ta_update']),
                 'id_khoa' => ($_POST['id_khoa_update']),
             ];
+
+            $data_required = [
+                'ten_lop' => check_string($_POST['ten_lop_update']),
+                'id_khoa' => ($_POST['id_khoa_update']),
+            ];
             $this->update_item(
                 "loai_lop",
                 $data_post,
-                "id_loai = '" . $_POST['id'] . "'"
+                "id_loai = '" . $_POST['id'] . "'",
+                $data_required
             );
         } elseif (isset($_POST['is_add'])) {
             $data_insert = [
@@ -587,9 +565,16 @@ class TeacherModel extends Model
                 "id_khoa" => ($_POST['id_khoa']),
                 "id_teacher" => $this->getInfoTeacher('id_teacher'),
             ];
+
+            $data_required = [
+                "ten_lop" => check_string($_POST['ten_lop']),
+                "id_khoa" => ($_POST['id_khoa']),
+                "id_teacher" => $this->getInfoTeacher('id_teacher'),
+            ];
             $this->add_item(
                 "loai_lop",
-                $data_insert
+                $data_insert,
+                $data_required
             );
         } elseif (isset($_POST['is_delete'])) {
             $this->delete_item(
@@ -618,15 +603,20 @@ class TeacherModel extends Model
             );
         } elseif (isset($_POST['is_update'])) {
             $data_post = [
-                'diem' => check_string($_POST['diem_update']),
                 'ma_mon' => check_string($_POST['ma_mon_update']),
                 'ten_mon' => check_string($_POST['ten_mon_update']),
                 'ghi_chu' => check_string($_POST['ghi_chu_update']),
             ];
+            $data_required = [
+                'ma_mon' => check_string($_POST['ma_mon_update']),
+                'ten_mon' => check_string($_POST['ten_mon_update']),
+            ];
+
             $this->update_item(
                 "mon_hoc",
                 $data_post,
-                "id_mon = '" . $_POST['id'] . "'"
+                "id_mon = '" . $_POST['id'] . "'",
+                $data_required
             );
         } elseif (isset($_POST['is_add'])) {
             $data_insert = [
@@ -636,9 +626,18 @@ class TeacherModel extends Model
                 'diem' => $_POST['diem'],
                 'id_teacher' => $this->getInfoTeacher('id_teacher'),
             ];
+
+            $data_required = [
+                'ten_mon' => check_string($_POST['ten_mon']),
+                'ma_mon' => check_string($_POST['ma_mon']),
+                'diem' => $_POST['diem'],
+                'id_teacher' => $this->getInfoTeacher('id_teacher'),
+
+            ];
             $this->add_item(
                 "mon_hoc",
-                $data_insert
+                $data_insert,
+                $data_required
             );
         } elseif (isset($_POST['is_delete'])) {
             $this->delete_item(
@@ -664,7 +663,7 @@ class TeacherModel extends Model
             );
         } elseif (isset($_POST['is_update'])) {
             $data_post = [
-                "ten_diem" => check_string($_POST['ten_diem_update']),
+                "ten_diem" => strtoupper(check_string($_POST['ten_diem_update'])),
             ];
             $this->update_item(
                 "loai_diem",
@@ -673,7 +672,7 @@ class TeacherModel extends Model
             );
         } elseif (isset($_POST['is_add'])) {
             $data_insert = [
-                "ten_diem" => check_string($_POST['ten_diem']),
+                "ten_diem" => strtoupper(check_string($_POST['ten_diem'])),
                 "id_teacher" => $this->getInfoTeacher('id_teacher'),
             ];
             $this->add_item(
@@ -705,16 +704,34 @@ class TeacherModel extends Model
             $day = $_GET['day'];
         }
 
-        $this->data = [
-            'lich_day' => $this->get_list("SELECT lich_day.* ,`hoc_ky`.ten_hocky, `mon_hoc`.ma_mon, `mon_hoc`.ten_mon,  `loai_lop`.ten_lop FROM lich_day 
-            INNER JOIN `hoc_ky` on hoc_ky.id_hocky  = lich_day.id_hocky
-            INNER JOIN `mon_hoc` on mon_hoc.id_mon   = lich_day.id_mon 
-            INNER JOIN `loai_lop` on loai_lop.id_loai  = lich_day.id_lop
-            WHERE lich_day.status = $status AND 
-             DATE_ADD(CURDATE(), INTERVAL $day DAY) 
-                 BETWEEN  lich_day.ngay_bat_dau AND lich_day.ngay_ket_thuc
-             ORDER BY lich_day.id DESC")
-        ];
+        if (!$day == 0) {
+
+            $this->data = [
+                'lich_day' => $this->get_list("SELECT lich_day.* ,`hoc_ky`.ten_hocky, `mon_hoc`.ma_mon, `mon_hoc`.ten_mon,  `loai_lop`.ten_lop FROM lich_day 
+                INNER JOIN `hoc_ky` on hoc_ky.id_hocky  = lich_day.id_hocky
+                INNER JOIN `mon_hoc` on mon_hoc.id_mon   = lich_day.id_mon 
+                INNER JOIN `loai_lop` on loai_lop.id_loai  = lich_day.id_lop
+                WHERE lich_day.status = $status AND 
+                 DATE_ADD(CURDATE(), INTERVAL $day DAY) 
+                     BETWEEN  lich_day.ngay_bat_dau AND lich_day.ngay_ket_thuc
+                 ORDER BY lich_day.id DESC")
+            ];
+        } else {
+
+            $this->data = [
+                'lich_day' => $this->get_list(
+                    "SELECT lich_day.* ,`hoc_ky`.ten_hocky, `mon_hoc`.ma_mon, `mon_hoc`.ten_mon,  `loai_lop`.ten_lop FROM lich_day 
+                INNER JOIN `hoc_ky` on hoc_ky.id_hocky  = lich_day.id_hocky
+                INNER JOIN `mon_hoc` on mon_hoc.id_mon   = lich_day.id_mon 
+                INNER JOIN `loai_lop` on loai_lop.id_loai  = lich_day.id_lop
+                WHERE lich_day.status = $status AND 
+                lich_day.ngay_bat_dau = '' OR lich_day.ngay_ket_thuc = '' 
+                 ORDER BY lich_day.id DESC"
+                )
+            ];
+        }
+
+
 
 
 
@@ -734,6 +751,18 @@ class TeacherModel extends Model
                 "id_teacher" => $this->getInfoTeacher('id_teacher'),
             ];
 
+
+            $data_required = [
+                "id_hocky" => check_string($_POST['hoc_ky']),
+                "id_mon" => check_string($_POST['mon_hoc']),
+                "id_lop" => check_string($_POST['loai_lop']),
+                "ca_hoc" => check_string($_POST['ca_hoc']),
+                "ngay_hoc" => check_string($_POST['ngay_hoc']),
+                "status" => check_string($_POST['status']),
+                "id_teacher" => $this->getInfoTeacher('id_teacher'),
+            ];
+
+
             if ($this->get_row("SELECT * FROM `lich_day` WHERE id_lop = '" . $_POST['loai_lop'] . "' AND 
             id_mon = '" . $_POST['mon_hoc'] . "'")) {
                 $response['status'] = false;
@@ -742,7 +771,8 @@ class TeacherModel extends Model
             } else {
                 $this->add_item(
                     "lich_day",
-                    $data_insert
+                    $data_insert,
+                    $data_required
                 );
             }
         } elseif (isset($_POST['is_delete'])) {
@@ -768,10 +798,23 @@ class TeacherModel extends Model
                 "ngay_ket_thuc" => check_string($_POST['ngay_ket_thuc_update']),
                 "status" => check_string($_POST['status_update']),
             ];
+
+
+
+            $data_required = [
+                "id_hocky" => check_string($_POST['hoc_ky_update']),
+                "id_mon" => check_string($_POST['mon_hoc_update']),
+                "id_lop" => check_string($_POST['loai_lop_update']),
+                "ca_hoc" => check_string($_POST['ca_hoc_update']),
+                "ngay_hoc" => check_string($_POST['ngay_hoc_update']),
+                "status" => check_string($_POST['status_update']),
+            ];
+
             $this->update_item(
                 "lich_day",
                 $data_post,
-                "id = '" . $_POST['id'] . "'"
+                "id = '" . $_POST['id'] . "'",
+                $data_required
             );
         }
     }

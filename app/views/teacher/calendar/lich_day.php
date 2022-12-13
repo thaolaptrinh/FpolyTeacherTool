@@ -19,6 +19,8 @@
           <div class="row fv-row">
             <select name="day" onchange="this.form.submit();" class="form-select form-select-solid" data-control="select2" data-hide-search="true" data-placeholder="Thời gian">
               <option></option>
+              <option value="0" <?= (isset($_GET['day'])  && $_GET['day'] == 0) || !isset($_GET['day']) ? 'selected="selected"' : false  ?>>Thời gian không xác định</option>
+
               <option value="7" <?= (isset($_GET['day'])  && $_GET['day'] == 7) || !isset($_GET['day']) ? 'selected="selected"' : false  ?>>7 ngày tới</option>
               <option value="14" <?= isset($_GET['day']) && $_GET['day'] == 14 ? 'selected="selected"' : false  ?>>14 ngày tới</option>
 
@@ -225,12 +227,13 @@
                 </select>
               </div>
               <div class="col-md-6  col-6 fv-row">
-                <label class="required fw-semibold fs-6 mb-2">Phòng học</label>
+                <label class="fw-semibold fs-6 mb-2">Phòng học</label>
                 <input type="text" name="phong_hoc_update" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Phòng học">
               </div>
 
               <div class="col-md-4  col-6 fv-row">
                 <label class="required fw-semibold fs-6 mb-2">Ngày học</label>
+                <i class="fas fa-question-circle ms-2 fs-7" data-bs-toggle="tooltip" title="thứ 2,4,6 - 3,5,7"></i>
                 <input type="text" name="ngay_hoc_update" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Ngày học">
               </div>
 
@@ -241,13 +244,13 @@
 
 
               <div class="col-md-4 col-6 col-6 fv-row">
-                <label class="required fw-semibold fs-6 mb-2">Số sinh viên</label>
+                <label class=" fw-semibold fs-6 mb-2">Số sinh viên</label>
                 <input type="text" name="so_sv_update" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Số sinh viên">
               </div>
 
 
               <div class="col-md-6 fv-row">
-                <label class="required fs-6 fw-semibold mb-2">Ngày bắt đầu</label>
+                <label class=" fs-6 fw-semibold mb-2">Ngày bắt đầu</label>
                 <div class="position-relative d-flex align-items-center">
                   <span class="svg-icon svg-icon-2 position-absolute mx-4">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -261,7 +264,7 @@
               </div>
 
               <div class="col-md-6 fv-row">
-                <label class="required fs-6 fw-semibold mb-2">Ngày kết thúc</label>
+                <label class=" fs-6 fw-semibold mb-2">Ngày kết thúc</label>
                 <div class="position-relative d-flex align-items-center">
                   <span class="svg-icon svg-icon-2 position-absolute mx-4">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -382,12 +385,15 @@
                 </select>
               </div>
               <div class="col-md-6  col-6 fv-row">
-                <label class="required fw-semibold fs-6 mb-2">Phòng học</label>
+                <label class=" fw-semibold fs-6 mb-2">Phòng học</label>
                 <input type="text" name="phong_hoc" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Phòng học">
               </div>
 
               <div class="col-md-4  col-6 fv-row">
                 <label class="required fw-semibold fs-6 mb-2">Ngày học</label>
+
+
+                <i class="fas fa-question-circle ms-2 fs-7" data-bs-toggle="tooltip" title="thứ 2,4,6 - 3,5,7"></i>
                 <input type="text" name="ngay_hoc" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Ngày học">
               </div>
 
@@ -398,13 +404,13 @@
 
 
               <div class="col-md-4 col-6 col-6 fv-row">
-                <label class="required fw-semibold fs-6 mb-2">Số sinh viên</label>
+                <label class=" fw-semibold fs-6 mb-2">Số sinh viên</label>
                 <input type="text" name="so_sv" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Số sinh viên">
               </div>
 
 
               <div class="col-md-6 fv-row">
-                <label class="required fs-6 fw-semibold mb-2">Ngày bắt đầu</label>
+                <label class=" fs-6 fw-semibold mb-2">Ngày bắt đầu</label>
                 <div class="position-relative d-flex align-items-center">
                   <span class="svg-icon svg-icon-2 position-absolute mx-4">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -418,7 +424,7 @@
               </div>
 
               <div class="col-md-6 fv-row">
-                <label class="required fs-6 fw-semibold mb-2">Ngày kết thúc</label>
+                <label class=" fs-6 fw-semibold mb-2">Ngày kết thúc</label>
                 <div class="position-relative d-flex align-items-center">
                   <span class="svg-icon svg-icon-2 position-absolute mx-4">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

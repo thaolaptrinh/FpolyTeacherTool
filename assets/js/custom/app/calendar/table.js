@@ -104,7 +104,7 @@ var KTAppListLich = (function () {
               text: "Xóa không thành công.",
               icon: "error",
               buttonsStyling: false,
-              confirmButtonText: "OK!",
+              confirmButtonText: "OK",
               customClass: {
                 confirmButton: "btn btn-primary",
               },

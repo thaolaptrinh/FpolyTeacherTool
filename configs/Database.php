@@ -17,7 +17,7 @@ define('PORT', '2003');
 
 class Database
 {
-  public $conn;
+  private $conn;
 
 
   function connect()
@@ -72,7 +72,7 @@ class Database
   {
     $this->connect();
 
-    $row = $this->conn->query("SELECT * FROM `settings`")->fetch_array();
+    $row = $this->conn->query("SELECT * FROM `settings` LIMIT 1")->fetch_array();
     if ($row) {
       return $row[$data];
     }

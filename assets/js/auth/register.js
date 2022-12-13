@@ -129,7 +129,7 @@ var KTSignupGeneral = (function () {
                   text: response.data.message,
                   icon: response.data.status ? "success" : "error",
                   buttonsStyling: false,
-                  confirmButtonText: "Ok!",
+                  confirmButtonText: "Ok",
                   customClass: {
                     confirmButton: "btn btn-primary",
                   },

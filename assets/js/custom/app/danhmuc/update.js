@@ -97,12 +97,11 @@ var KTUpdate = (function () {
               axios
                 .post(window.location.href, formData_update)
                 .then((response) => {
-                  console.log(response);
                   Swal.fire({
                     text: response.data.message,
                     icon: response.data.status ? "success" : "error",
                     buttonsStyling: false,
-                    confirmButtonText: "Ok!",
+                    confirmButtonText: "Ok",
                     customClass: {
                       confirmButton: "btn btn-primary",
                     },
@@ -123,7 +122,7 @@ var KTUpdate = (function () {
               text: "Xin lỗi, vui lòng thử lại.",
               icon: "error",
               buttonsStyling: false,
-              confirmButtonText: "OK!",
+              confirmButtonText: "OK",
               customClass: {
                 confirmButton: "btn btn-primary",
               },
@@ -187,13 +186,6 @@ var KTUpdate = (function () {
                 },
               },
             },
-            mo_ta: {
-              validators: {
-                notEmpty: {
-                  message: "Mô tả không được để trống",
-                },
-              },
-            },
           };
 
           formData = ["ten_lop_update", "id_khoa_update", "mo_ta_update"];
@@ -203,23 +195,16 @@ var KTUpdate = (function () {
 
         case "khoa-hoc": {
           fields = {
-            thu_tu_update: {
+            ten_khoa_update: {
               validators: {
                 notEmpty: {
                   message: "Tên khóa không được để trống",
                 },
               },
             },
-            thu_tu_update: {
-              validators: {
-                notEmpty: {
-                  message: "Thứ tự không được để trống",
-                },
-              },
-            },
           };
 
-          formData = ["ten_khoa_update", "thu_tu_update"];
+          formData = ["ten_khoa_update"];
           break;
         }
         case "hoc-ky": {
@@ -231,16 +216,9 @@ var KTUpdate = (function () {
                 },
               },
             },
-            thu_tu_update: {
-              validators: {
-                notEmpty: {
-                  message: "Thứ tự không được để trống",
-                },
-              },
-            },
           };
 
-          formData = ["ten_hocky_update", "thu_tu_update"];
+          formData = ["ten_hocky_update"];
           break;
         }
 
@@ -260,29 +238,9 @@ var KTUpdate = (function () {
                 },
               },
             },
-            diem_update: {
-              validators: {
-                notEmpty: {
-                  message: "Điểm không được để trống",
-                },
-              },
-            },
-
-            ghi_chu_update: {
-              validators: {
-                notEmpty: {
-                  message: "Ghi chú không được để trống",
-                },
-              },
-            },
           };
 
-          formData = [
-            "ma_mon_update",
-            "ten_mon_update",
-            "ghi_chu_update",
-            "diem_update",
-          ];
+          formData = ["ma_mon_update", "ten_mon_update", "ghi_chu_update"];
           break;
         }
 

@@ -152,7 +152,27 @@ class AuthModel extends Model
           $response['message']  = 'Không tồn tại tài khoản email này!';
           die(json_encode($response));
         } else {
-          $this->send_mail($data['mail'], 'fpoly@gmail.com', 'fpoly@gmail.com', 'fpoly@gmail.com');
+
+          $pass_new = generate_pass();
+
+          $send =  $this->send_mail($data['email'], $this->settings('site_name'), 'Mật khẩu mới của bạn: ' . $pass_new);
+
+          if ($send) {
+
+            $update = $this->update_value(
+              "teachers",
+              ['password' => typepass($pass_new)],
+              "email =  '" . $data['email'] . "'"
+            );
+            if (!$update) {
+              $this->response['status'] = false;
+              $this->response['message'] = 'Gửi mật khẩu mới thất bại!';
+              die(json_encode($this->response));
+            }
+            $this->response['status'] = true;
+            $this->response['message'] = 'Gửi mail thành công!';
+            die(json_encode($this->response));
+          }
         }
       } else {
         $response['status'] = false;

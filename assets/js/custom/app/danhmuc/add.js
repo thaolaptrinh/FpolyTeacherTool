@@ -34,6 +34,72 @@ var KTLAdd = (function () {
     const submitButton = element.querySelector(
       '[data-kt-modal-action="submit"]'
     );
+
+    if (page_target == "mon-hoc") {
+      $('input[name="all"]').change(function (e) {
+        e.preventDefault();
+        if (this.checked) {
+          $('input[name="diem"]').each(function (index, element) {
+            $(this).removeAttr("checked");
+          });
+          $('input[name="diem"]').each(function (index, element) {
+            $(this).attr("checked", "checked");
+          });
+        } else {
+          $('input[name="diem"]').each(function (index, element) {
+            $(this).removeAttr("checked");
+          });
+        }
+      });
+
+      $('input[name="4_lab_dau"]').change(function (e) {
+        e.preventDefault();
+        if (this.checked) {
+          for (let index = 1; index <= 4; index++) {
+            $(`input[value="Lab${index}"]`).attr("checked", "checked");
+          }
+        } else {
+          for (let index = 1; index <= 4; index++) {
+            $(`input[value="LAB${index}"]`).removeAttr("checked");
+          }
+        }
+      });
+
+      $('input[name="asm"]').change(function (e) {
+        e.preventDefault();
+        if (this.checked) {
+          for (let index = 1; index <= 4; index++) {
+            $(`input[value="GĐ${index}"]`).attr("checked", "checked");
+            $(`input[value="GD${index}"]`).attr("checked", "checked");
+          }
+        } else {
+          for (let index = 1; index <= 4; index++) {
+            $(`input[value="GĐ${index}"]`).removeAttr("checked");
+            $(`input[value="GD${index}"]`).removeAttr("checked");
+          }
+        }
+      });
+
+      $('input[name="8_quiz"]').change(function (e) {
+        e.preventDefault();
+        if (this.checked) {
+          for (let index = 1; index <= 8; index++) {
+            $(`input[value="QUIZ ${index}"]`).attr("checked", "checked");
+            $(`input[value="QUIZ${index}"]`).attr("checked", "checked");
+            $(`input[value="Q ${index}"]`).attr("checked", "checked");
+            $(`input[value="Q${index}"]`).attr("checked", "checked");
+          }
+        } else {
+          for (let index = 1; index <= 8; index++) {
+            $(`input[value="QUIZ${index}"]`).removeAttr("checked");
+            $(`input[value="QUIZ ${index}"]`).removeAttr("checked");
+            $(`input[value="Q ${index}"]`).removeAttr("checked");
+            $(`input[value="Q${index}"]`).removeAttr("checked");
+          }
+        }
+      });
+    }
+
     submitButton.addEventListener("click", (e) => {
       e.preventDefault();
 
@@ -75,12 +141,11 @@ var KTLAdd = (function () {
               axios
                 .post(window.location.href, formData)
                 .then((response) => {
-                  console.log(response);
                   Swal.fire({
                     text: response.data.message,
                     icon: response.data.status ? "success" : "error",
                     buttonsStyling: false,
-                    confirmButtonText: "Ok!",
+                    confirmButtonText: "Ok",
                     customClass: {
                       confirmButton: "btn btn-primary",
                     },
@@ -148,11 +213,7 @@ var KTLAdd = (function () {
               },
             },
           };
-          formData = [
-            {
-              name: "ten_diem",
-            },
-          ];
+          formData = ["ten_diem"];
           break;
         }
         case "loai-lop": {
@@ -168,13 +229,6 @@ var KTLAdd = (function () {
               validators: {
                 notEmpty: {
                   message: "Tên lớp không được để trống",
-                },
-              },
-            },
-            mo_ta: {
-              validators: {
-                notEmpty: {
-                  message: "Mô tả không được để trống",
                 },
               },
             },
@@ -234,14 +288,6 @@ var KTLAdd = (function () {
               validators: {
                 notEmpty: {
                   message: "Điểm không được để trống",
-                },
-              },
-            },
-
-            ghi_chu: {
-              validators: {
-                notEmpty: {
-                  message: "Ghi chú không được để trống",
                 },
               },
             },

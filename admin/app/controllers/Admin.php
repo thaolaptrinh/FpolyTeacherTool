@@ -62,8 +62,8 @@ class Admin extends Controller
 
     $this->model_home->teachers();
     $this->data['page_title'] = 'Giáo viên';
-    $this->data['content'] = 'admin/teacher';
-    $this->data['page_target'] = 'teacher';
+    $this->data['content'] = 'admin/teachers';
+    $this->data['page_target'] = 'teachers';
     $this->data = array_merge($this->data, $this->model_home->data);
     $this->render('layouts/admin', $this->data);
   }

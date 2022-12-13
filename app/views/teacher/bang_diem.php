@@ -62,14 +62,14 @@
       </div>
     </div>
     <div class="card-toolbar flex-row-fluid justify-content-end gap-5">
-      <div class="w-100 mw-150px">
+      <!-- <div class="w-100 mw-150px">
         <select class="form-select form-select-solid" data-control="select2" data-hide-search="true" data-placeholder="Loại sinh viên" data-kt-list-diem-filter="status">
           <option></option>
           <option value="all">All</option>
           <option value="gioi">Giỏi</option>
           <option value="yeu">Yếu</option>
         </select>
-      </div>
+      </div> -->
       <a href="" data-bs-toggle="modal" data-bs-target="#kt_modal_create_app" class="btn btn-primary">Thêm mới</a>
     </div>
   </div>
@@ -103,8 +103,8 @@
             } ?>
 
             <th class="text-end min-w-70px contenteditable">Nhận xét</th>
-            <th class="text-end min-w-70px">Phân loại</th>
-            <th class="text-end min-w-70px">Actions</th>
+            <th class="text-end min-w-70px hide-export">Phân loại</th>
+            <th class="text-end min-w-70px hide-export">Actions</th>
           </tr>
         <?php  } ?>
       </thead>
@@ -179,3 +179,11 @@
     </table>
   </div>
 </div>
+
+
+
+<style>
+  #kt_list_diem_table_filter {
+    display: none;
+  }
+</style>

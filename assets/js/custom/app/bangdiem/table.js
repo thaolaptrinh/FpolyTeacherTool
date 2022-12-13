@@ -9,10 +9,73 @@ var KTAppListDiem = (function () {
 
   // Private functions
   var initDatatable = function () {
-    // Init datatable --- more info on datatables: https://datatables.net/manual/
+    var lop =
+      document.querySelector(
+        'select[name="lop"] option[selected="selected"]'
+      ) &&
+      document.querySelector('select[name="lop"] option[selected="selected"]')
+        .value;
+    var mon =
+      document.querySelector(
+        'select[name="lop"] option[selected="selected"]'
+      ) &&
+      document.querySelector('select[name="lop"] option[selected="selected"]')
+        .value;
+
     datatable = $(table).DataTable({
       info: false,
+
       order: [],
+      dom: '<"float-end"B>tilp',
+      scrollX: true,
+
+      buttons: [
+        {
+          extend: "print",
+          className: "print",
+          title: `Bảng điểm ${lop} - ${mon}`,
+          exportOptions: {
+            columns: [":not(.hide-export)"],
+          },
+        },
+
+        {
+          extend: "copyHtml5",
+          className: "copyHtml5",
+          title: `Bảng điểm ${lop} - ${mon}`,
+          exportOptions: {
+            columns: [":not(.hide-export)"],
+          },
+        },
+
+        {
+          extend: "csvHtml5",
+          className: "csvHtml5",
+          title: `Bảng điểm ${lop} - ${mon}`,
+          exportOptions: {
+            columns: [":not(.hide-export)"],
+          },
+        },
+
+        {
+          extend: "pdfHtml5",
+          className: "pdfHtml5",
+          title: `Bảng điểm ${lop} - ${mon}`,
+          exportOptions: {
+            columns: [":not(.hide-export)"],
+          },
+        },
+
+        {
+          extend: "excelHtml5",
+          className: "excelButton",
+          title: `Bảng điểm ${lop} - ${mon}`,
+          exportOptions: {
+            columns: [":not(.hide-export)"],
+          },
+        },
+      ],
+
       pageLength: 10,
       language: {
         emptyTable: "Không có sẵn dữ liệu",
@@ -53,6 +116,7 @@ var KTAppListDiem = (function () {
   };
 
   // Search Datatable --- official docs reference: https://datatables.net/reference/api/search()
+
   var handleSearchDatatable = () => {
     const filterSearch = document.querySelector(
       '[data-kt-list-diem-filter="search"]'
@@ -73,6 +137,7 @@ var KTAppListDiem = (function () {
       if (value === "all") {
         value = "";
       }
+
       datatable
         .column(length - 2)
         .search(value)
@@ -142,7 +207,7 @@ var KTAppListDiem = (function () {
               text: "Xóa không thành công.",
               icon: "error",
               buttonsStyling: false,
-              confirmButtonText: "OK!",
+              confirmButtonText: "OK",
               customClass: {
                 confirmButton: "btn btn-primary",
               },

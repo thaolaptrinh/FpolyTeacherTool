@@ -1,55 +1,57 @@
-  # DỰ ÁN 1 2022 - FPOLY Teacher Tool
+# DỰ ÁN 1 2022 - FPOLY Teacher Tool
 
-  # Bắt đầu thiết lập
+# Bắt đầu thiết lập
 
-  - Sau khi có giải nén mã nguồn:
-    Nếu bạn chạy trên localhost của máy chủ ảo như Xampp,... bạn thiết lập như sau:
+- Sau khi có giải nén mã nguồn:
+  Nếu bạn chạy trên localhost của máy chủ ảo như Xampp,... bạn thiết lập như sau:
 
-  # 1. Config Databse:
+# 1. Config Databse:
 
-  Truy cập đến folder/configs/Database.php -> thay đổi các thông tin phù hợp cho máy ảo của bạn
-  HOSTNAME, USERNAME, PASSWORD, DATABASE, PORT
+- Sau khi có file database: Bạn tạo database và import dữ liệu vào phpmyadmin
 
-  # 2. Config Base Url Cho dự án
+Truy cập đến folder/configs/Database.php -> thay đổi các thông tin phù hợp cho máy ảo của bạn
+HOSTNAME, USERNAME, PASSWORD, DATABASE, PORT
 
-  # Đối với máy chủ ảo:
+# 2. Config Base Url Cho dự án
 
-  1. Auth - người dùng: không tính thư mục (admin)
+# Đối với máy chủ ảo:
 
-  Truy cập folder/bootstrap.php -> thay đổi biến $base_url trong block else với mặc định
-  $base_url = 'http://' . $\_SERVER['HTTP_HOST'] . '/path_folder/' -> (path_folder: đường dẫn thư mục htdocs chứa dự án)
+1. Auth - người dùng: không tính thư mục (admin)
 
-  2. Admin (thư mục chứ source: admin)
+Truy cập folder/bootstrap.php -> thay đổi biến $base_url trong block else với mặc định
+$base_url = 'http://' . $\_SERVER['HTTP_HOST'] . '/path_folder/' -> (path_folder: đường dẫn thư mục htdocs chứa dự án)
 
-  Truy cập folder/admin/bootstrap.php -> thay đổi biến $base_url trong block if và else
+2. Admin (thư mục chứ source: admin)
 
-  $base_url = 'http://' . $\_SERVER['HTTP_HOST'] . '/path_folder/admin/'
-  $base = 'http://' . $\_SERVER['HTTP_HOST'] . '/path_folder/'
+Truy cập folder/admin/bootstrap.php -> thay đổi biến $base_url trong block if và else
 
-  -> (path_folder: đường dẫn thư mục htdocs chứa dự án)
+$base_url = 'http://' . $\_SERVER['HTTP_HOST'] . '/path_folder/admin/'
+$base = 'http://' . $\_SERVER['HTTP_HOST'] . '/path_folder/'
 
-  # Đối với deploy lên môi trường thực tế (hosting, vps, ...):
+-> (path_folder: đường dẫn thư mục htdocs chứa dự án)
 
-  1. Auth - người dùng: không tính thư mục (admin)
+# Đối với deploy lên môi trường thực tế (hosting, vps, ...):
 
-  - Truy cập folder/bootstrap.php -> thay đổi biến $base_url trong block else với mặc định
-    $base_url = 'http://' . $\_SERVER['HTTP_HOST'] . '/'
+1. Auth - người dùng: không tính thư mục (admin)
 
-  2. Admin (thư mục chứ source: admin)
+- Truy cập folder/bootstrap.php -> thay đổi biến $base_url trong block else với mặc định
+  $base_url = 'http://' . $\_SERVER['HTTP_HOST'] . '/'
 
-  Truy cập folder/admin/bootstrap.php -> thay đổi biến $base_url trong block if và else
+2. Admin (thư mục chứ source: admin)
 
-  # Nếu bạn deploy admin lên subdomain config như sau:
+Truy cập folder/admin/bootstrap.php -> thay đổi biến $base_url trong block if và else
 
-  - Đặt thư mục gốc path_domain/admin hoặc đường dẫn đến thư mục admin
+# Nếu bạn deploy admin lên subdomain config như sau:
 
-    $base_url = 'http://' . $\_SERVER['HTTP_HOST'] . '/'
-    $base = path_domain . '/'
+- Đặt thư mục gốc path_domain/admin hoặc đường dẫn đến thư mục admin
 
-  # Ngược lại:
+  $base_url = 'http://' . $\_SERVER['HTTP_HOST'] . '/'
+  $base = path_domain . '/'
 
-  - Thiết lập như sau
-    $base_url = path_domain . '/admin/'
-    $base = path_domain . '/'
+# Ngược lại:
 
-  -> (path_domain: đường dẫn địa chỉ domain của bạn)
+- Thiết lập như sau
+  $base_url = path_domain . '/admin/'
+  $base = path_domain . '/'
+
+-> (path_domain: đường dẫn địa chỉ domain của bạn)

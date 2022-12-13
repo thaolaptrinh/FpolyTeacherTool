@@ -95,13 +95,6 @@ var KTUpdateLich = (function () {
     // Init form validation rules. For more info check the FormValidation plugin's official documentation:https://formvalidation.io/
     var validator = FormValidation.formValidation(form, {
       fields: {
-        so_sv_update: {
-          validators: {
-            notEmpty: {
-              message: "Không được bỏ trống.",
-            },
-          },
-        },
         ca_hoc_update: {
           validators: {
             notEmpty: {
@@ -116,13 +109,7 @@ var KTUpdateLich = (function () {
             },
           },
         },
-        phong_hoc_update: {
-          validators: {
-            notEmpty: {
-              message: "Không được bỏ trống.",
-            },
-          },
-        },
+
         hoc_ky_update: {
           validators: {
             notEmpty: {
@@ -138,20 +125,6 @@ var KTUpdateLich = (function () {
           },
         },
         mon_hoc_update: {
-          validators: {
-            notEmpty: {
-              message: "Không được bỏ trống.",
-            },
-          },
-        },
-        ngay_bat_dau_update: {
-          validators: {
-            notEmpty: {
-              message: "Không được bỏ trống.",
-            },
-          },
-        },
-        ngay_ket_thuc_update: {
           validators: {
             notEmpty: {
               message: "Không được bỏ trống.",
@@ -246,7 +219,7 @@ var KTUpdateLich = (function () {
                     text: response.data.message,
                     icon: response.data.status ? "success" : "error",
                     buttonsStyling: false,
-                    confirmButtonText: "Ok!",
+                    confirmButtonText: "Ok",
                     customClass: {
                       confirmButton: "btn btn-primary",
                     },
@@ -266,7 +239,7 @@ var KTUpdateLich = (function () {
               text: "Xin lỗi, vui lòng thử lại.",
               icon: "error",
               buttonsStyling: false,
-              confirmButtonText: "OK!",
+              confirmButtonText: "OK",
               customClass: {
                 confirmButton: "btn btn-primary",
               },

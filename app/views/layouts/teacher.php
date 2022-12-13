@@ -1,4 +1,7 @@
-<?php require_once 'app/views/include/head.php'; ?>
+<?php require_once 'app/views/include/head.php';
+?>
+
+
 <div class="d-flex  flex-column flex-root app-root" id="kt_app_root">
   <div class="app-page flex-column flex-column-fluid" id="kt_app_page">
     <?php require_once 'app/views/include/teacher/header.php'; ?>
@@ -110,10 +113,16 @@
                             <div class="current" data-kt-stepper-element="content">
                               <div class="w-100">
                                 <div class="fv-row">
-                                  <label class="d-flex align-items-center fs-5 fw-semibold mb-4">
-                                    <span class="required">Danh sách</span>
-                                    <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="Lựa chọn học kỳ"></i>
-                                  </label>
+                                  <div class="d-flex justify-content-between align-items-center">
+                                    <label class="d-flex align-items-center fs-5 fw-semibold mb-4">
+                                      <span class="required">Danh sách</span>
+                                      <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="Lựa chọn học kỳ"></i>
+                                    </label>
+                                    <a class="btn btn-primary" href="<?= BASE_URL('danh-muc/hoc-ky') ?>" target="_blank">Thêm mới</a>
+                                  </div>
+
+
+
                                   <div class="fv-row fv-plugins-icon-container scroll-y  max-h-300px">
                                     <?php
                                     if (!empty($this->data['hoc_ky']) && isset($this->data['hoc_ky'])) {
@@ -150,10 +159,15 @@
                             <div data-kt-stepper-element="content">
                               <div class="w-100">
                                 <div class="fv-row fv-plugins-icon-container scroll-y  max-h-300px">
-                                  <label class="d-flex align-items-center fs-5 fw-semibold mb-4">
-                                    <span class="required">Danh sách</span>
-                                    <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="Chọn lớp học"></i>
-                                  </label>
+
+
+                                  <div class="d-flex justify-content-between align-items-center">
+                                    <label class="d-flex align-items-center fs-5 fw-semibold mb-4">
+                                      <span class="required">Danh sách</span>
+                                      <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="Chọn lớp học"></i>
+                                    </label>
+                                    <a class="btn btn-primary" href="<?= BASE_URL('danh-muc/loai-lop') ?>" target="_blank">Thêm mới</a>
+                                  </div>
 
                                   <?php
                                   if (!empty($this->data['loai_lop']) && isset($this->data['loai_lop'])) {
@@ -185,10 +199,17 @@
                             <div data-kt-stepper-element="content">
                               <div class="w-100">
                                 <div class="fv-row">
-                                  <label class="d-flex align-items-center fs-5 fw-semibold mb-4">
-                                    <span class="required">Danh sách</span>
-                                    <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="Lựa chọn môn học"></i>
-                                  </label>
+
+
+                                  <div class="d-flex justify-content-between align-items-center">
+                                    <label class="d-flex align-items-center fs-5 fw-semibold mb-4">
+                                      <span class="required">Danh sách</span>
+                                      <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="Lựa chọn môn học"></i>
+                                    </label>
+                                    <a class="btn btn-primary" href="<?= BASE_URL('danh-muc/mon-hoc') ?>" target="_blank">Thêm mới</a>
+                                  </div>
+
+
                                   <div class="fv-row fv-plugins-icon-container scroll-y  max-h-300px">
                                     <?php
                                     if (!empty($this->data['mon_hoc']) && isset($this->data['mon_hoc'])) {
@@ -323,6 +344,7 @@
     </div>
   </div>
 </div>
+
 
 
 <?php require_once 'app/views/include/teacher/widget.php'; ?>

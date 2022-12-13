@@ -15,39 +15,21 @@ var KTModalNewLich = (function () {
     var ngayBatDau = $(form.querySelector('[name="ngay_bat_dau"]'));
     ngayBatDau.flatpickr({
       enableTime: true,
-      dateFormat: "Y-m-d",
+      dateFormat: "d-m-Y",
     });
 
     var ngayKetThuc = $(form.querySelector('[name="ngay_ket_thuc"]'));
     ngayKetThuc.flatpickr({
       enableTime: true,
       minDate: ngayBatDau,
-      dateFormat: "Y-m-d",
+      dateFormat: "d-m-Y",
     });
   };
 
-  // flatpickr(form.querySelector('[name="ngay_bat_dau"]'), {
-  //   onChange: function () {
-  //     fv.revalidateField("startDate");
-  //   },
-  // });
-
-  // flatpickr(form.querySelector('[name="ngay_ket_thuc"]'), {
-  //   onChange: function () {
-  //     fv.revalidateField("endDate");
-  //   },
-  // });
   // Handle form validation and submittion
   var handleForm = function () {
     validator = FormValidation.formValidation(form, {
       fields: {
-        so_sv: {
-          validators: {
-            notEmpty: {
-              message: "Không được bỏ trống.",
-            },
-          },
-        },
         ca_hoc: {
           validators: {
             notEmpty: {
@@ -62,13 +44,7 @@ var KTModalNewLich = (function () {
             },
           },
         },
-        phong_hoc: {
-          validators: {
-            notEmpty: {
-              message: "Không được bỏ trống.",
-            },
-          },
-        },
+
         hoc_ky: {
           validators: {
             notEmpty: {
@@ -90,33 +66,8 @@ var KTModalNewLich = (function () {
             },
           },
         },
-        ngay_bat_dau: {
-          validators: {
-            notEmpty: {
-              message: "Không được bỏ trống.",
-            },
-          },
-        },
-        ngay_ket_thuc: {
-          validators: {
-            notEmpty: {
-              message: "Không được bỏ trống.",
-            },
-          },
-        },
       },
       plugins: {
-        // startEndDate: new FormValidation.plugins.StartEndDate({
-        //   format: "DD-MM-YYYY",
-        //   startDate: {
-        //     field: "ngay_bat_dau",
-        //     message: "Ngày bắt đầu phải sớm hơn ngày kết thúc",
-        //   },
-        //   endDate: {
-        //     field: "ngay_ket_thuc",
-        //     message: "Ngày kết thúc phải lớn hơn ngày bắt đầu",
-        //   },
-        // }),
         trigger: new FormValidation.plugins.Trigger(),
         bootstrap: new FormValidation.plugins.Bootstrap5({
           rowSelector: ".fv-row",
@@ -186,7 +137,7 @@ var KTModalNewLich = (function () {
                     text: response.data.message,
                     icon: response.data.status ? "success" : "error",
                     buttonsStyling: false,
-                    confirmButtonText: "Ok!",
+                    confirmButtonText: "Ok",
                     customClass: {
                       confirmButton: "btn btn-primary",
                     },
@@ -206,7 +157,7 @@ var KTModalNewLich = (function () {
               text: "Xin lỗi, vui lòng thử lại.",
               icon: "error",
               buttonsStyling: false,
-              confirmButtonText: "OK!",
+              confirmButtonText: "OK",
               customClass: {
                 confirmButton: "btn btn-primary",
               },

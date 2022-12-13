@@ -110,7 +110,7 @@ var KTSigninGeneral = (function () {
                   text: response.data.message,
                   icon: response.data.status ? "success" : "error",
                   buttonsStyling: false,
-                  confirmButtonText: "Ok!",
+                  confirmButtonText: "Ok",
                   customClass: {
                     confirmButton: "btn btn-primary",
                   },
@@ -133,7 +133,7 @@ var KTSigninGeneral = (function () {
             text: "Xin lỗi, vui lòng thử lại.",
             icon: "error",
             buttonsStyling: false,
-            confirmButtonText: "OK!",
+            confirmButtonText: "OK",
             customClass: {
               confirmButton: "btn btn-primary",
             },

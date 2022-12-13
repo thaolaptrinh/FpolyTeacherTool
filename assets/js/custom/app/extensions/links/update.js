@@ -46,14 +46,6 @@ var KTLinksUpdateLink = (function () {
             },
           },
         },
-
-        link_mota_update: {
-          validators: {
-            notEmpty: {
-              message: "Mô tả liên kết không được để trống",
-            },
-          },
-        },
       },
 
       plugins: {
@@ -85,7 +77,7 @@ var KTLinksUpdateLink = (function () {
         "link_mota_update",
         form.querySelector('[name="link_mota_update"]').value
       );
-      formData_update.append("is_updatelink", true);
+      formData_update.append("is_update", true);
 
       // Validate form before submit
       if (validator) {
@@ -113,7 +105,7 @@ var KTLinksUpdateLink = (function () {
                     text: response.data.message,
                     icon: response.data.status ? "success" : "error",
                     buttonsStyling: false,
-                    confirmButtonText: "Ok!",
+                    confirmButtonText: "Ok",
                     customClass: {
                       confirmButton: "btn btn-primary",
                     },
@@ -134,7 +126,7 @@ var KTLinksUpdateLink = (function () {
               text: "Xin lỗi, vui lòng thử lại.",
               icon: "error",
               buttonsStyling: false,
-              confirmButtonText: "OK!",
+              confirmButtonText: "OK",
               customClass: {
                 confirmButton: "btn btn-primary",
               },

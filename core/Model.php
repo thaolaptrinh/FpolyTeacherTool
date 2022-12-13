@@ -34,13 +34,12 @@ class Model extends Database
             $send = $this->mail->send();
 
             if ($send) {
-                $this->response['status'] = true;
-                $this->response['message'] = 'Gửi mail thành công!';
-                die(json_encode($this->response));
+                return true;
             }
         } catch (Exception $e) {
 
             $this->response['status'] = false;
+            $this->response['data'] = $address;
             $this->response['message'] = $e->getMessage();
             die(json_encode($this->response));
         }
@@ -54,11 +53,15 @@ class Model extends Database
         die(json_encode($this->response));
     }
 
-    public function add_item($table, $data_insert)
+    public function add_item($table, $data_insert, $data_required = [])
     {
         # code...
 
-        $result = array_filter($data_insert, 'myFilter');
+        if (!empty($data_required)) {
+            $result = array_filter($data_required, 'myFilter');
+        } else {
+            $result = array_filter($data_insert, 'myFilter');
+        }
 
         if (!$result) {
 
@@ -67,6 +70,7 @@ class Model extends Database
             if ($is_insert) {
                 $this->response['status'] = true;
                 $this->response['message'] = 'Thêm dữ liệu thành công!';
+                $this->response['data'] = $data_insert;
             } else {
                 $this->response['status'] = false;
                 $this->response['message'] = 'Thêm dữ liệu thất bại!';
@@ -96,10 +100,18 @@ class Model extends Database
         die(json_encode($this->response));
     }
 
-    public function update_item($table, $data_post, $where)
+    public function update_item($table, $data_post, $where, $data_required = [])
     {
         # code...
         $result = array_filter($data_post, 'myFilter');
+
+        if (!empty($data_required)) {
+            $result = array_filter($data_required, 'myFilter');
+        } else {
+            $result = array_filter($data_post, 'myFilter');
+        }
+
+
         if (!($result)) {
 
             $result = $this->update_value($table, $data_post, $where);

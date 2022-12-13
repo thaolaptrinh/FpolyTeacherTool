@@ -86,7 +86,7 @@
                   </div>
 
                   <div class="fv-row mb-7 fv-plugins-icon-container">
-                    <label class="required fw-semibold fs-6 mb-2">Mô tả</label>
+                    <label class=" fw-semibold fs-6 mb-2">Mô tả</label>
                     <textarea name="mo_ta_update" class="form-control form-control-solid mb-3 mb-lg-0"></textarea>
                   </div>
                 </div>
@@ -148,7 +148,7 @@
                   </div>
 
                   <div class="fv-row mb-7 fv-plugins-icon-container">
-                    <label class="required fw-semibold fs-6 mb-2">Mô tả</label>
+                    <label class=" fw-semibold fs-6 mb-2">Mô tả</label>
                     <textarea name="mo_ta" class="form-control form-control-solid mb-3 mb-lg-0"></textarea>
                   </div>
                 </div>

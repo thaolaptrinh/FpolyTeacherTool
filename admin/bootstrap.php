@@ -63,7 +63,7 @@ require_once  'configs/Routes.php';
 require_once  '../core/Route.php';
 require_once  '../core/Controller.php';
 
-require_once  'core/Model.php';
+require_once  '../core/Model.php';
 require_once 'app/App.php';
 
 
@@ -79,6 +79,4 @@ $site_title = $DB->settings('site_title');
 $site_description = $DB->settings('site_description');
 $site_keywords = $DB->settings('site_keywords');
 $site_name = $DB->settings('site_name');
-$site_phone = $DB->settings('phone');
-$site_email = $DB->settings('email');
 $site_status = $DB->settings('site_status');

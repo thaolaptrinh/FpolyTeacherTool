@@ -87,14 +87,9 @@
 
                   <div class="text-gray-700 fw-semibold fs-6 me-2">Trạng thái website</div>
 
-                  <div class="d-flex align-items-senter">
-
-
-
-                    <span class="text-gray-900 fw-bolder fs-6 badge py-3 px-4 fs-7 badge-light-<?= isset($this->data['site_status']) && $this->data['site_status'] == 2 ? 'success' : 'warning' ?>">
-                      <?= isset($this->data['site_status']) && $this->data['site_status'] == 2 ? 'Hoạt động' : 'Ngừng hoạt động' ?>
-                    </span>
-                  </div>
+                  <label class="form-check form-switch form-check-custom form-check-solid">
+                    <input class="form-check-input" type="checkbox" value="2" <?= isset($this->data['site_status']) && $this->data['site_status'] == 2 ? 'checked' : '' ?> name="site_status">
+                  </label>
                 </div>
               </div>
 
@@ -138,7 +133,7 @@
             </span>
 
             <div class="d-flex flex-column flex-sm-row d-grid gap-2">
-              <a href="<?= BASE('') ?>" class="btn btn-primary flex-shrink-0" style="background: rgba(255, 255, 255, 0.2)">My App</a>
+              <a href="<?= BASE('') ?>" target="_blank" class="btn btn-primary flex-shrink-0" style="background: rgba(255, 255, 255, 0.2)">My App</a>
             </div>
           </div>
           <div class="col-5 pt-10">
